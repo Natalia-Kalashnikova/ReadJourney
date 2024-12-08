@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+        <symbol id="icon-x" viewBox="0 0 32 32">
+            <path fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.909"
+                d="M24 8 8 24M8 8l16 16" style="stroke:var(--color1, #f9f9f9)" />
+        </symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 32 32">
+            <path fill="none" stroke="#e3e3e3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.667"
+                d="M18.667 22.667 25.334 16l-6.667-6.667M25.333 16H6.666" style="stroke:var(--color2, #e3e3e3)" />
+        </symbol>
+        <symbol id="icon-attachment" viewBox="0 0 32 32">
+            <path fill="#f9f9f9"
+                d="m28.1 18.9-15-15c-2.5-2.6-6.6-2.6-9.2-.1s-2.6 6.7 0 9.2l.1.1L6.8 16l1.4-1.4-2.9-2.9c-1.7-1.7-1.7-4.6 0-6.3s4.6-1.8 6.3-.1l.1.1 14.9 14.9c1.8 1.7 1.8 4.6.1 6.3-1.7 1.8-4.6 1.8-6.3.1l-.1-.1-7.4-7.4c-1-1-.9-2.6 0-3.5a2.607 2.607 0 0 1 3.5 0l4.1 4.1 1.4-1.4-4.2-4.2a4.436 4.436 0 0 0-4.887-.817A4.435 4.435 0 0 0 11.4 14.4c-1.6 1.7-1.6 4.4 0 6.2l7.5 7.5c2.5 2.6 6.6 2.6 9.2.1s2.6-6.7 0-9.3z"
+                style="fill:var(--color1, #f9f9f9)" />
+        </symbol>
+        <symbol id="icon-chevron-left" viewBox="0 0 32 32">
+            <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="m20 24-8-8 8-8" />
+        </symbol>
+        <symbol id="icon-chevron-right" viewBox="0 0 32 32">
+            <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="m12 8 8 8-8 8" />
+        </symbol>
+        <symbol id="icon-check-ok" viewBox="0 0 32 32">
+            <path fill="#30b94d" d="m15 21.76-5.4-6.081 1.8-2.026 3.601 4.052L22.2 9.6l1.801 2.027-9 10.133z"
+                style="fill:var(--color3, #30b94d)" />
+            <path fill="#30b94d"
+                d="M0 16c0 8.836 7.164 16 16 16s16-7.164 16-16S24.836 0 16 0 0 7.164 0 16zm16 13.091c-1.719 0-3.421-.339-5.01-.996s-3.031-1.622-4.247-2.838A13.094 13.094 0 0 1 3.905 10.99 13.094 13.094 0 0 1 16 2.909a13.091 13.091 0 1 1 0 26.182z"
+                style="fill:var(--color3, #30b94d)" />
+        </symbol>
+        <symbol id="icon-pajamas_error" viewBox="0 0 32 32">
+            <path fill="#e90516"
+                d="M16 29A13.003 13.003 0 0 1 3 16 13.002 13.002 0 0 1 16 3a13.003 13.003 0 0 1 13 13 13.001 13.001 0 0 1-13 13zm0 3a15.997 15.997 0 0 0 16-16A15.997 15.997 0 0 0 16 0 16.003 16.003 0 0 0 0 16a16.003 16.003 0 0 0 16 16zm2-10a2 2 0 1 1-4.001-.001A2 2 0 0 1 18 22zm-.5-12.5a1.5 1.5 0 0 0-3 0v7A1.503 1.503 0 0 0 16 18a1.499 1.499 0 0 0 1.5-1.5v-7z"
+                style="fill:var(--color4, #e90516)" />
+        </symbol>
+        <symbol id="icon-eye-off" viewBox="0 0 32 32">
+            <path fill="none" stroke="#f9f9f9" stroke-linejoin="round" stroke-width="2.08"
+                d="M23.92 23.92A13.43 13.43 0 0 1 16 26.667C6.666 26.667 1.333 16 1.333 16a24.614 24.614 0 0 1 6.746-7.92M13.2 5.653a12.161 12.161 0 0 1 2.8-.32C25.333 5.333 30.666 16 30.666 16a24.646 24.646 0 0 1-2.88 4.253m-8.959-1.426a4.01 4.01 0 0 1-2.855 1.273 3.996 3.996 0 0 1-3.779-2.501 3.98 3.98 0 0 1 .055-3.126 4.01 4.01 0 0 1 .927-1.298"
+                style="stroke:var(--color1, #f9f9f9)" />
+            <path fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.08"
+                d="m1.334 1.333 29.333 29.333" style="stroke:var(--color1, #f9f9f9)" />
+        </symbol>
+        <symbol id="icon-eye" viewBox="0 0 32 32">
+            <path fill="none" stroke="#f9f9f9" stroke-linejoin="round" stroke-width="2.08"
+                d="M16 5.333C25.333 5.333 30.666 16 30.666 16S25.333 26.667 16 26.667C6.666 26.667 1.333 16 1.333 16S6.666 5.333 16 5.333z"
+                style="stroke:var(--color1, #f9f9f9)" />
+            <path fill="none" stroke="#f9f9f9" stroke-linejoin="round" stroke-width="2.08"
+                d="M16 20a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" style="stroke:var(--color1, #f9f9f9)" />
+        </symbol>
+        <symbol id="icon-pie-chart" viewBox="0 0 32 32">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"
+                d="M22.933 18.667c.369 0 .554 0 .704.082a.708.708 0 0 1 .293.324c.067.157.05.324.016.659a10.672 10.672 0 0 1-12.694 9.397 10.66 10.66 0 0 1-8.381-8.381 10.666 10.666 0 0 1 9.397-12.694c.334-.034.502-.05.659.016.13.055.257.17.324.293.082.15.082.334.082.704V17.6c0 .373 0 .56.073.703a.665.665 0 0 0 .291.291c.143.073.329.073.703.073h8.533zM18.667 3.733c0-.369 0-.554.082-.704a.713.713 0 0 1 .324-.293c.157-.067.324-.05.659-.016a10.665 10.665 0 0 1 9.548 9.549c.033.334.05.502-.016.659a.704.704 0 0 1-.293.324c-.15.082-.334.082-.704.082h-8.533c-.373 0-.56 0-.703-.073a.665.665 0 0 1-.291-.291c-.073-.143-.073-.329-.073-.703V3.734z" />
+        </symbol>
+
+        <symbol id="icon-hourglass" viewBox="0 0 32 32">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2"
+                d="m16 16-5.697-4.748c-.846-.705-1.27-1.058-1.574-1.49a3.978 3.978 0 0 1-.591-1.263c-.137-.511-.137-1.061-.137-2.163V2.667M16 16l5.697-4.748c.847-.705 1.27-1.058 1.574-1.49.27-.383.47-.811.592-1.263C24 7.988 24 7.438 24 6.336V2.667M16 16l-5.697 4.748c-.846.705-1.27 1.058-1.574 1.491-.27.383-.47.81-.591 1.263-.137.51-.137 1.061-.137 2.163v3.669M16 16l5.697 4.748c.847.705 1.27 1.058 1.574 1.491.27.383.47.81.592 1.263.137.51.137 1.061.137 2.163v3.669M5.333 2.667h21.333M5.333 29.333h21.333" />
+        </symbol>
+        <symbol id="icon-Logo" viewBox="0 0 79 32">
+            <path fill="#f9f9f9"
+                d="M0 0v20.706h79.059V0H54.887c-1.801 0-3.585.336-5.262.992a8.123 8.123 0 0 0-2.719 1.755l-1.019.996a14.945 14.945 0 0 0-1.895 2.26 40.83 40.83 0 0 0-4.055 7.536l-2.808-6.034a11.704 11.704 0 0 0-3.693-4.503A15.518 15.518 0 0 0 24.264.001H0zm0 24.471h79.059V32H0v-7.529z"
+                style="fill:var(--color1, #f9f9f9)" />
+        </symbol>
+        <symbol id="icon-block-start" viewBox="0 0 32 32">
+            <path fill="none" stroke="#f9f9f9" stroke-width="1.28"
+                d="M31.36 16c0 8.483-6.877 15.36-15.36 15.36S.64 24.483.64 16 7.517.64 16 .64 31.36 7.517 31.36 16z"
+                style="stroke:var(--color1, #f9f9f9)" />
+            <path fill="#e90516"
+                d="M11.52 9.6h8.96c1.06 0 1.92.86 1.92 1.92v8.96c0 1.06-.86 1.92-1.92 1.92h-8.96a1.92 1.92 0 0 1-1.92-1.92v-8.96c0-1.06.86-1.92 1.92-1.92z"
+                style="fill:var(--color4, #e90516)" />
+        </symbol>
+        <symbol id="icon-block-pause" viewBox="0 0 32 32">
+            <path fill="#e90516"
+                d="M28.8 16c0 7.069-5.731 12.8-12.8 12.8S3.2 23.069 3.2 16C3.2 8.931 8.931 3.2 16 3.2S28.8 8.931 28.8 16z"
+                style="fill:var(--color4, #e90516)" />
+            <path fill="none" stroke="#f9f9f9" stroke-width="1.28"
+                d="M31.36 16c0 8.483-6.877 15.36-15.36 15.36S.64 24.483.64 16 7.517.64 16 .64 31.36 7.517 31.36 16z"
+                style="stroke:var(--color1, #f9f9f9)" />
+        </symbol>
+        <symbol id="icon-chevron-down" viewBox="0 0 32 32">
+            <path fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                d="m8 12 8 8 8-8" style="stroke:var(--color1, #f9f9f9)" />
+        </symbol>
+        <symbol id="icon-chevron-upp" viewBox="0 0 32 32">
+            <path fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                d="m24 20-8-8-8 8" style="stroke:var(--color1, #f9f9f9)" />
+        </symbol>
+        <symbol id="icon-dell" viewBox="0 0 32 32">
+            <path fill="#e85050" d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0s16 7.163 16 16z"
+                opacity=".1" style="fill:var(--color1, #e85050)" />
+            <path fill="none" stroke="#e85050" stroke-width="1.143"
+                d="M31.429 16c0 8.521-6.908 15.429-15.429 15.429S.571 24.521.571 16 7.479.571 16 .571 31.429 7.479 31.429 16z"
+                style="stroke:var(--color1, #e85050)" />
+            <path fill="none" stroke="#e85050" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.143"
+                d="M10 12h12" style="stroke:var(--color1, #e85050)" />
+            <path fill="none" stroke="#e85050" stroke-linejoin="round" stroke-width="1.143"
+                d="M20.667 12v9.333a1.331 1.331 0 0 1-1.333 1.333h-6.667a1.331 1.331 0 0 1-1.333-1.333V12m1.999 0v-1.333a1.331 1.331 0 0 1 1.333-1.333h2.667a1.333 1.333 0 0 1 1.333 1.333V12"
+                style="stroke:var(--color1, #e85050)" />
+            <path fill="none" stroke="#e85050" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.143"
+                d="M14.667 15.333v4m2.666-4v4" style="stroke:var(--color1, #e85050)" />
+        </symbol>
+        <symbol id="icon-trash" viewBox="0 0 32 32">
+            <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.286" d="M4 8h24" />
+            <path fill="none" stroke-linejoin="round" stroke-width="2.286"
+                d="M25.333 8v18.667a2.668 2.668 0 0 1-2.667 2.667H9.333a2.668 2.668 0 0 1-2.667-2.667V8m4.001 0V5.334a2.666 2.666 0 0 1 2.667-2.667h5.333a2.668 2.668 0 0 1 2.667 2.667V8" />
+            <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.286"
+                d="M13.333 14.667v8m5.334-8v8" />
+        </symbol>
+
+        <symbol id="icon-block" viewBox="0 0 76 32">
+            <path fill="#30b94d" d="M76.241 1.28.721 12.059V32h75.52V1.28z" opacity=".2"
+                style="fill:var(--color2, #30b94d)" />
+            <path fill="#30b94d"
+                d="M74.364.204 1.076 12.053a1.28 1.28 0 0 0-1.059 1.468l.204 1.264a1.28 1.28 0 0 0 1.468 1.059L74.977 3.995a1.28 1.28 0 0 0 1.059-1.468l-.204-1.264A1.28 1.28 0 0 0 74.364.204z"
+                style="fill:var(--color2, #30b94d)" />
+        </symbol>
+        <symbol id="icon-menu" viewBox="0 0 32 32">
+            <path fill="none" stroke="#f9f9f9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.286"
+                d="M4 16h24M4 8h24M12 24h16" style="stroke:var(--color1, #f9f9f9)" />
+        </symbol>
+
+    </defs>
+</svg>
