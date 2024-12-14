@@ -1,6 +1,6 @@
 import storage from 'redux-persist/lib/storage';
-import booksSlice from './books/booksSlice';
-import { authReducer } from './auth/authSlice';
+import booksSlice from './books/bookSlice.js';
+import { authReducer } from './auth/authSlice.js';
 import { configureStore } from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
