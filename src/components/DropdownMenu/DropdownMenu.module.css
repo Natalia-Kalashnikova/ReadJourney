@@ -1,0 +1,68 @@
+.dropdownContainer {
+  position: relative;
+}
+
+.chevronIcon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.toggleButton {
+  display: flex;
+  width: 120px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgb(62, 62, 62);
+  outline: none;
+  cursor: pointer;
+  font-size: 12px;
+  background: transparent;
+  padding: 12px 14px;
+}
+
+.optionList {
+  position: absolute;
+  z-index: 1;
+  top: 120%;
+  left: 0;
+  color: var(--grayLight-color);
+  background-color: var(--grayBlack-color);
+  border-top: none;
+  display: none;
+  list-style: none;
+  padding: 14px;
+  margin: 0;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.optionList.open {
+  display: block;
+}
+
+.optionItem {
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.optionItem:not(:last-child) {
+  margin-bottom: 7px;
+}
+
+.optionItem:hover {
+  color: var(--whitePrimary-color);
+}
+
+@media (min-width: 768px) {
+  .toggleButton {
+    width: 153px;
+    height: 46px;
+    padding: 14px;
+    font-size: 14px;
+  }
+  .optionItem {
+    font-size: 14px;
+  }
+}

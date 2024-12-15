@@ -1,14 +1,39 @@
-import css from '../Button/Button.module.css';
+// import css from '../Button/Button.module.css';
 
-const Button = ({ className, label, onClick, prop }) => {
-    const buttonClass = `${css.button} ${prop === 'true' ? css.buttonLarge : ''} ${css.buttonHover} ${className || ''}`;
-    return (
-        <button className={buttonClass}
-            onClick={onClick}
-            type="submit">
-            {label}
-        </button>
-    );
+// const Button = ({ className, label, onClick, prop }) => {
+//     const buttonClass = `${css.button} ${prop === 'true' ? css.buttonLarge : ''} ${css.buttonHover} ${className || ''}`;
+//     return (
+//         <button className={buttonClass}
+//             onClick={onClick}
+//             type="submit">
+//             {label}
+//         </button>
+//     );
+// }
+
+// export default Button;
+
+
+import css from './Button.module.css';
+
+const Button=({ className, label, onClick, prop })=> {
+  const buttonClass = [
+    css.btn,
+    prop === 'true' ? css.btnLarge : css.btnSmall,
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  return (
+    <button
+      className={buttonClass}
+      onClick={onClick}
+      type="submit"
+    >
+      {label}
+    </button>
+  );
 }
 
 export default Button;

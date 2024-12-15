@@ -1,4 +1,4 @@
-.button {
+/* .button {
   font-size: 14px;
   font-weight: 700;
   line-height: 18px;
@@ -35,6 +35,44 @@
     font-size: 16px;
   }
   .buttonLarge {
+    padding: 14px 28px;
+  }
+} */
+
+.btn {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 2%;
+  border: 1px solid var(--whiteLightTranslucent-color);
+  border-radius: 30px;
+  background-color: transparent;
+  transition: color 0.3s linear, background-color 0.3s linear;
+}
+
+.btnHover {
+  color: var(--blackLight-color);
+  background: var(--whitePrimary-color);
+}
+
+.btnSmall {
+  padding: 10px 20px;
+}
+
+.btnLarge {
+  padding: 12px 24px;
+}
+
+@media (min-width: 768px) {
+  .btn {
+    font-size: 16px;
+  }
+
+  .btnSmall {
+    padding: 12px 28px;
+  }
+
+  .btnLarge {
     padding: 14px 28px;
   }
 }

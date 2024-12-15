@@ -1,3 +1,81 @@
+/* .heading {
+  font-size: 10px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  margin-left: 14px;
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 14px;
+  }
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  max-width: 295px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1440px) {
+  .formContainer {
+    max-width: 313px;
+  }
+}
+
+.fieldContainer {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 12px;
+  color: var(--grey-light);
+}
+
+@media (min-width: 768px) {
+  .label {
+    top: 16px;
+    font-size: 14px;
+  }
+}
+
+.inputField {
+  width: 100%;
+  height: 44px;
+  font-size: 12px;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 14px 16px 65px;
+  outline: none;
+  color: var(--white-primary);
+  background: var(--grey-black);
+  border: 1px solid rgba(18, 20, 23, 0.1);
+}
+
+.inputField.error {
+  border-color: var(--focus-color);
+}
+
+@media (min-width: 768px) {
+  .inputField {
+    height: 50px;
+    font-size: 14px;
+  }
+}
+
+.errorMessage {
+  font-size: 10px;
+  color: var(--focus-color);
+  padding: 4px 0px 0px 14px;
+} */
+
 .heading {
   font-size: 10px;
   font-weight: 500;
@@ -36,18 +114,17 @@
   padding: 16px 14px 16px 65px;
   outline: none;
   color: var(--whitePrimary-color);
-  background-color: var(--grayBlack-color);
-  padding-left: 86px;
+  background: var(--grayBlack-color);
   border: 1px solid rgba(18, 20, 23, 0.1);
 }
 
 .inputFieldError {
-  border-color: #ff4c4c;
+  border-color: red;
 }
 
 .titleError {
   font-size: 10px;
-  color: #ff4c4c;
+  color: red;
   padding: 4px 0px 0px 14px;
 }
 
@@ -55,15 +132,18 @@
   .heading {
     font-size: 14px;
   }
-  .formContainer {
-    max-width: 313px;
+  .inputField {
+    height: 50px;
+    font-size: 14px;
   }
   .label {
     top: 16px;
     font-size: 14px;
   }
-  .inputField {
-    height: 50px;
-    font-size: 14px;
+}
+
+@media (min-width: 1440px) {
+  .formContainer {
+    max-width: 313px;
   }
 }
