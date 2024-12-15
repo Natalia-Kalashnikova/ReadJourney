@@ -1,0 +1,40 @@
+.button {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 2%;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.buttonLarge {
+  padding: 12px 28px;
+}
+
+.buttonHover:focus,
+.buttonHover:hover {
+  color: #333;
+  background: #fff;
+  animation: growAnimation 0.3s forwards;
+}
+
+@keyframes growAnimation {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+@media (min-width: 768px) {
+  .button {
+    font-size: 16px;
+  }
+  .buttonLarge {
+    padding: 14px 28px;
+  }
+}

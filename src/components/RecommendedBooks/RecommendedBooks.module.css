@@ -1,0 +1,144 @@
+.recommendedBooksContainer {
+  width: 100%;
+  max-width: 295px;
+  height: 244px;
+  border-radius: 12px;
+  background: var(--grayBlack-color);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .recommendedBooksContainer {
+    max-width: 313px;
+    height: 272px;
+    padding: 26px 20px;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .recommendedBooksContainer {
+    height: 259px;
+    padding: 20px;
+  }
+}
+
+.recommendedBooksHeading {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+@media (min-width: 768px) {
+  .recommendedBooksHeading {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.booksList {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 385px) {
+  .booksList {
+    gap: 4px;
+  }
+}
+
+.bookListItem {
+  width: 71px;
+  height: 141px;
+}
+
+.bookImage {
+  width: 71px;
+  height: 107px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.bookTitle {
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookAuthor {
+  font-size: 10px;
+  color: var(--grayLight-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--grayLight-color);
+  margin: auto 0;
+  text-decoration: none;
+}
+
+.homeLink:hover::after,
+.homeLink:focus::after {
+  color: red;
+}
+
+.homeText {
+  position: relative;
+  font-size: 12px;
+  transition: color 0.3s linear;
+}
+
+.homeText::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  height: 1px;
+  background: var(--grayLight-color);
+  transition: background-color 0.3s linear;
+}
+
+.homeText:hover,
+.homeText:focus {
+  color: var(--whitePrimary-color);
+}
+
+.homeText:hover::after,
+.homeText:focus::after {
+  background: var(--whitePrimary-color);
+}
+
+.arrowIcon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.25s ease;
+}
+
+.arrowIcon:hover,
+.arrowIcon:focus {
+  transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+  .homeText {
+    font-size: 14px;
+  }
+
+  .arrowIcon {
+    width: 24px;
+    height: 24px;
+  }
+}

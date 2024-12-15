@@ -1,8 +1,8 @@
+import MyLibrary from "../components/MyLibrary/MyLibrary.jsx";
+
 const MyLibraryPage = () => {
     return (
-        <div>
-            MyLibraryPage
-        </div>
+<MyLibrary />
     );
 };
 

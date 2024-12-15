@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+@media (min-width: 768px) {
+  .container {
+    gap: 16px;
+    padding: 16px 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    flex-direction: row;
+  }
+}
