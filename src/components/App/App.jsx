@@ -1,20 +1,25 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { fetchCurrentUser } from '../../redux/auth/authOperations.js';
 import { selectToken } from '../../redux/auth/authSelectors.js';
 import MyLibrary from '../MyLibrary/MyLibrary.jsx';
 import { ToastContainer } from 'react-toastify';
+import { useAuth } from '../../hooks/useAuth.js';
+import Loader from '../Loader/Loader.jsx';
+import Layout from '../Layout/Layout.jsx.jsx'
 
 function App () {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
   const token = useSelector(selectToken);
+
   useEffect(() => {
     if (token) {
       dispatch(fetchCurrentUser());
     }
   }, [dispatch, token]);
+
   return isRefreshing ? (
     <Loader />
   ) : (
@@ -51,7 +56,7 @@ function App () {
           />
           <Route
             path="/library"
-            element={<PrivateRoute redirectTo="/library" component={<Lib />} />}
+            element={<PrivateRoute redirectTo="/library" component={<MyLibrary />} />}
           />
           <Route
             path="/reading/:bookId"

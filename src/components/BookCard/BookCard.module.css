@@ -1,1 +1,59 @@
+.listItem {
+  width: 137px;
+  height: 248px;
+  background: transparent;
+}
 
+.listItem:last-child {
+  margin-right: 0;
+}
+
+.bookImage {
+  width: 137px;
+  height: 208px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: var(--grayBlack-color);
+  cursor: pointer;
+}
+
+.detailsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.bookDetails {
+  max-width: 137px;
+}
+
+.bookDetails.pageTrue {
+  max-width: 89px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.author {
+  font-size: 10px;
+  color: var(--grayLight-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deleteButton {
+  background: transparent;
+  transition: transform 0.25s linear;
+}
+
+.deleteButton:hover,
+.deleteButton:focus {
+  transform: scale(1.1);
+}
