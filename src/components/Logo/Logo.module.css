@@ -1,0 +1,24 @@
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.logoText {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .logoText.page {
+    display: block;
+  }
+}
+
+@media (min-width: 1440px) {
+  .logoText {
+    display: block;
+  }
+}

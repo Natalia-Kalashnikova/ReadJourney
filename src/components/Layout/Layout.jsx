@@ -1,7 +1,9 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { Suspense } from 'react';
-import Loader from 'components/Loader/Loader';
-export default function Layout() {
+import Loader from '../Loader/Loader.jsx';
+import Header from '../Header/Header.jsx';
+
+const Layout=()=> {
   const location = useLocation();
   const hideHeaderPaths = ['/register', '/login'];
   return (
@@ -15,3 +17,5 @@ export default function Layout() {
     </div>
   );
 }
+
+export default Layout;
