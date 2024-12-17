@@ -1,16 +1,16 @@
 import { NavLink } from 'react-router-dom';
-import styles from './RegSubmitBlock.module.css';
+import css from './RegSubmitBlock.module.css';
 
-const RegSubmitBlock=({ log }) =>{
+const RegSubmitBlock=() =>{
   return (
     <div>
       <button
         type="submit"
-        className={`${styles.actionButton} ${log === 'login' ? styles.login : ''}`}
+        className={css.actionButton}
       >
         Registration
       </button>
-      <NavLink to="/login" className={styles.actionLink}>
+      <NavLink to="/login" className={css.actionLink}>
         Already have an account?
       </NavLink>
     </div>

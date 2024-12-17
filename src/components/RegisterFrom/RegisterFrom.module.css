@@ -16,6 +16,19 @@
   padding: 20px 20px 40px 20px;
 }
 
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 210px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .fieldContainer {
   position: relative;
   max-width: 295px;
@@ -34,10 +47,21 @@
   height: 44px;
   border: 1px solid rgba(18, 20, 23, 0.1);
   border-radius: 12px;
-  padding: 14px;
   outline: none;
   color: var(--whitePrimary-color);
   background: var(--grayBlack-color);
+}
+
+.nameField {
+  padding: 14px 14px 14px 65px;
+}
+
+.emailField {
+  padding: 14px 14px 14px 53px;
+}
+
+.passwordField {
+  padding: 14px 14px 14px 86px;
 }
 
 .errorFeedback {
@@ -52,11 +76,34 @@
   padding: 4px 0px 0px 14px;
 }
 
+.icon {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  cursor: pointer;
+  stroke: var(--blackLight-color);
+  fill: none;
+}
+
 @media (min-width: 768px) {
+  .container {
+    gap: 16px;
+    flex-direction: row;
+    justify-content: center;
+    padding: 32px;
+  }
   .formBlock {
     max-width: 704px;
     height: 960px;
     padding: 40px 64px;
+  }
+
+  .formContainer {
+    height: 308px;
+  }
+
+  .formGroup {
+    gap: 14px;
   }
 
   .fieldContainer {
@@ -70,7 +117,10 @@
   .field {
     max-width: 472px;
     height: 50px;
-    padding: 16px 14px 16px 65px;
+  }
+  .icon {
+    top: 17px;
+    right: 17px;
   }
 }
 

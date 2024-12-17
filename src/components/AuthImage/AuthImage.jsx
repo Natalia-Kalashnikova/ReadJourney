@@ -6,16 +6,18 @@ import css from './AuthImage.module.css';
 
 export default function AuthorizationImage() {
   return (
-    <picture>
-      <source
-        srcSet={`${mobileImg} 1x, ${mobileImg2x} 2x`}
-        media="(max-width: 767px)"
-      />
-      <source
-        srcSet={`${desktopImg} 1x, ${desktopImg2x} 2x`}
-        media="(min-width: 1440px)"
-      />
-      <img className={css.authImage} src={desktopImg} alt="register img" />
-    </picture>
+    <div className={css.imgWrapper}>
+      <picture>
+        <source
+          srcSet={`${mobileImg} 1x, ${mobileImg2x} 2x`}
+          media="(max-width: 767px)"
+        />
+        <source
+          srcSet={`${desktopImg} 1x, ${desktopImg2x} 2x`}
+          media="(min-width: 1440px)"
+        />
+        <img className={css.authImage} src={desktopImg} alt="register img" />
+      </picture>
+    </div>
   );
 }

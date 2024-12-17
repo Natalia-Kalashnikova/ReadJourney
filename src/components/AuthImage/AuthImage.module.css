@@ -1,18 +1,36 @@
-.authImage {
-  display: block;
+.imgWrapper {
+  width: 100%;
+  max-width: 335px;
+  min-height: 411px;
+  background: var(--blackLight-color);
   border-radius: 30px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 @media (min-width: 768px) {
+  .imgWrapper {
+    display: none;
+  }
+
   .authImage {
     display: none;
   }
 }
 
 @media (min-width: 1440px) {
+  .imgWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 0;
+    max-width: 600px;
+    height: 736px;
+  }
   .authImage {
     display: block;
-    max-width: 100%;
-    height: 736px;
+    height: auto;
   }
 }

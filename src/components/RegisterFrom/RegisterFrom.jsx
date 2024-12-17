@@ -1,4 +1,4 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import css from './RegisterFrom.module.css';
 import { useState } from 'react';
@@ -9,6 +9,8 @@ import { toast } from 'react-toastify';
 import RegSubmitBlock from '../RegSubmitBlock/RegSubmitBlock.jsx';
 import AuthImage from '../AuthImage/AuthImage.jsx';
 import LogoTitle from '../LogoTitle/LogoTitle.jsx';
+import sprite from '../../images/sprite.svg';
+import classNames from 'classnames';
 
 const initialValues = {
   name: '',
@@ -17,23 +19,28 @@ const initialValues = {
 };
 
 const schema = Yup.object({
-  name: Yup.string().required('Required').min(2, 'The name must have at least 2 letters'),
+  name: Yup.string()
+    .required('Required')
+    .min(2, 'The name must have at least 2 letters'),
   email: Yup.string()
     .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Invalid email address')
     .required('Required'),
-  password: Yup.string().required('Required').min(7, 'Password must be at least 7 characters'),
+  password: Yup.string()
+    .required('Required')
+    .min(7, 'Password must be at least 7 characters'),
 });
 
-export default function Register() {
+const Register=()=> {
   const [showPassword, setShowPassword] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
+    setShowPassword(prevShowPassword => !prevShowPassword);
   };
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async values => {
     try {
       await dispatch(registerUser(values)).unwrap();
       navigate('/recommended');
@@ -58,75 +65,135 @@ export default function Register() {
           {({ errors, touched }) => (
             <Form>
               <div className={css.formContainer}>
-                <div className={css.fieldContainer}>
-                  <label className={css.label} htmlFor="name">
-                    Name:
-                  </label>
-                  <Field
-                    id="name"
-                    name="name"
-                    type="text"
-                    className={`${css.field} ${
-                      touched.name && errors.name ? css.error : ''
-                    }`}
-                    placeholder="Nik Ovson"
-                  />
-                  {touched.name && errors.name && <div className={css.errorFeedback}>{errors.name}</div>}
-                  {touched.name && !errors.name && (
-                    <div className={css.feedbackMessage}>Name is secure</div>
-                  )}
+                <div className={css.formGroup}>
+                  <div className={css.fieldContainer}>
+                    <label className={css.label} htmlFor="name">Name:</label>
+                    <Field className={classNames(css.field, css.nameField)}
+                      id="name"
+                      name="name"
+                      type="name"
+                      placeholder="Nik Ovson"
+                      error={errors.name && touched.name ? 'true' : 'false'}
+                      paddingLeft="65px"
+                      style={{
+                        borderColor:
+                          touched.name && errors.name
+                            ? 'red'
+                            : touched.name && !errors.name
+                            ? 'green'
+                            : 'defaultColor',
+                      }}
+                    />
+                    {touched.name &&
+                      (errors.name ? (
+                        <svg className={css.icon} width={20} height={20}>
+                          <use href={`${sprite}#icon-pajamas_error`} />
+                        </svg>
+                      ) : (
+                        <svg className={css.icon} width={20} height={20}>
+                          <use href={`${sprite}#icon-check-ok`} />
+                        </svg>
+                      ))}
+                    {touched.name && !errors.name && (
+                      <p className={css.feedbackMessage}>Name is secure</p>
+                    )}
+                    <ErrorMessage className={css.errorFeedback} name="name" component="div" />
+                  </div>
+
+                  <div className={css.fieldContainer}>
+                    <label className={css.label} htmlFor="email">Mail:</label>
+                    <Field className={classNames(css.field, css.emailField)}
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="nik@google.com"
+                      error={errors.email && touched.email ? 'true' : 'false'}                      
+                      paddingLeft="53px"
+                      style={{
+                        borderColor:
+                          touched.email && errors.email
+                            ? 'red'
+                            : touched.email && !errors.email
+                            ? 'green'
+                            : 'defaultColor',
+                      }}
+                    />
+                    {touched.email &&
+                      (errors.email ? (
+                        <svg className={css.icon} width={20} height={20}>
+                          <use href={`${sprite}#icon-pajamas_error`} />
+                        </svg>
+                      ) : (
+                        <svg className={css.icon} width={20} height={20}>
+                          <use href={`${sprite}#icon-check-ok`} />
+                        </svg>
+                      ))}
+                    {touched.email && !errors.email && (
+                      <p className={css.feedbackMessage}>Email is secure</p>
+                    )}
+                    <ErrorMessage className={css.errorFeedback} name="email" component="div" />
+                  </div>
+
+                  <div className={css.fieldContainer}>
+                    <label className={css.label} htmlFor="password">Password:</label>
+                    <Field className={classNames(css.field, css.passwordField)}
+                      id="password"
+                      name="password"
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="********"
+                      paddingLeft="86px"
+                      style={{
+                        borderColor:
+                          touched.password && errors.password
+                            ? 'red'
+                            : touched.password && !errors.password
+                            ? 'green'
+                            : 'defaultColor',
+                      }}
+                    />
+
+                    {errors.password && touched.password ? (
+                      <svg className={css.icon} width={20} height={20}>
+                        <use href={`${sprite}#icon-pajamas_error`} />
+                      </svg>
+                    ) : !errors.password && touched.password ? (
+                      <svg className={css.icon} width={20} height={20}>
+                        <use href={`${sprite}#icon-check-ok`} />
+                      </svg>
+                    ) : showPassword ? (
+                      <svg className={css.icon}
+                        width={20}
+                        height={20}
+                        onMouseDown={e => {
+                          e.preventDefault();
+                          togglePasswordVisibility();
+                        }}
+                      >
+                        <use href={`${sprite}#icon-eye`} />
+                      </svg>
+                    ) : (
+                      <svg className={css.icon}
+                        width={20}
+                        height={20}
+                        onMouseDown={e => {
+                          e.preventDefault();
+                          togglePasswordVisibility();
+                        }}
+                      >
+                        <use href={`${sprite}#icon-eye-off`} />
+                      </svg>
+                    )}
+
+                    {touched.password && !errors.password && (
+                      <p className={css.feedbackMessage}>Password is secure</p>
+                    )}
+                    <ErrorMessage className={css.errorFeedback} name="password" component="div" />
+                  </div>
                 </div>
 
-                <div className={css.fieldContainer}>
-                  <label className={css.label} htmlFor="email">
-                    Email:
-                  </label>
-                  <Field
-                    id="email"
-                    name="email"
-                    type="email"
-                    className={`${css.field} ${
-                      touched.email && errors.email ? css.error : ''
-                    }`}
-                    placeholder="nik@google.com"
-                  />
-                  {touched.email && errors.email && <div className={css.errorFeedback}>{errors.email}</div>}
-                  {touched.email && !errors.email && (
-                    <div className={css.feedbackMessage}>Email is secure</div>
-                  )}
+                <div style={{ marginTop: 'auto' }}>
+                  <RegSubmitBlock />
                 </div>
-
-                <div className={css.fieldContainer}>
-                  <label className={css.label} htmlFor="password">
-                    Password:
-                  </label>
-                  <Field
-                    id="password"
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    className={`${css.field} ${
-                      touched.password && errors.password ? css.error : ''
-                    }`}
-                    placeholder="********"
-                  />
-                  <button
-                    type="button"
-                    onClick={togglePasswordVisibility}
-                    className={css.icon}
-                  >
-                    {showPassword ? 'Hide' : 'Show'}
-                  </button>
-                  {touched.password && errors.password && (
-                    <div className={css.errorFeedback}>{errors.password}</div>
-                  )}
-                  {touched.password && !errors.password && (
-                    <div className={css.feedbackMessage}>Password is secure</div>
-                  )}
-                </div>
-              </div>
-
-              <div style={{ marginTop: 'auto' }}>
-                <RegSubmitBlock />
               </div>
             </Form>
           )}
@@ -137,3 +204,4 @@ export default function Register() {
   );
 }
 
+export default Register;
