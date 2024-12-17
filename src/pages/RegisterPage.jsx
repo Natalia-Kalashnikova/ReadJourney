@@ -1,8 +1,8 @@
+import RegisterFrom from '../components/RegisterFrom/RegisterFrom.jsx';
+
 const RegisterPage = () => {
     return (
-        <div>
-            RegisterPage
-        </div>
+        <RegisterFrom />
     );
 };
 
