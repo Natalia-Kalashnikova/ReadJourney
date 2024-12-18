@@ -6,7 +6,7 @@ import { removeBookFromCollection } from '../../redux/books/booksOperations.js';
 import FallbackImage from '../FallbackImage/FallbackImage.jsx';
 import BookDetails from '../BookDetails/BookDetails.jsx';
 
-const BookItem=({ book, openLoginModal, currentPage = false })=> {
+const BookCard=({ book, openLoginModal, currentPage = false })=> {
   const dispatch = useDispatch();
   const handleDeleteClick = () => {
     dispatch(removeBookFromCollection(book._id));
@@ -50,4 +50,4 @@ const BookItem=({ book, openLoginModal, currentPage = false })=> {
   );
 }
 
-export default BookItem;
+export default BookCard;
