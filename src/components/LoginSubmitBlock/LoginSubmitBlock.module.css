@@ -1,12 +1,11 @@
 .actionButton {
   border-radius: 30px;
   color: var(--blackLight-color);
-  background-color: var(--grayDark-color);
   font-size: 14px;
   font-weight: 700;
   line-height: 1;
   margin-right: 14px;
-  padding: 12px 29px;
+  padding: 12px 45px;
   transition: color 0.3s linear, background-color 0.3s linear;
 }
 

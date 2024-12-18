@@ -73,8 +73,7 @@ const Register=()=> {
                       name="name"
                       type="name"
                       placeholder="Nik Ovson"
-                      error={errors.name && touched.name ? 'true' : 'false'}
-                      paddingLeft="65px"
+                      error={errors.name && touched.name ? 'true' : 'false'}                      
                       style={{
                         borderColor:
                           touched.name && errors.name
@@ -107,8 +106,7 @@ const Register=()=> {
                       name="email"
                       type="email"
                       placeholder="nik@google.com"
-                      error={errors.email && touched.email ? 'true' : 'false'}                      
-                      paddingLeft="53px"
+                      error={errors.email && touched.email ? 'true' : 'false'}                       
                       style={{
                         borderColor:
                           touched.email && errors.email
@@ -140,8 +138,7 @@ const Register=()=> {
                       id="password"
                       name="password"
                       type={showPassword ? 'text' : 'password'}
-                      placeholder="********"
-                      paddingLeft="86px"
+                      placeholder="********"                      
                       style={{
                         borderColor:
                           touched.password && errors.password

@@ -1,0 +1,132 @@
+.container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.formBlock {
+  width: 100%;
+  max-width: 335px;
+  min-height: 411px;
+  background: var(--blackLight-color);
+  border-radius: 30px;
+  padding: 20px 20px 40px 20px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 210px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldContainer {
+  position: relative;
+  max-width: 295px;
+}
+
+.label {
+  position: absolute;
+  top: 13px;
+  left: 14px;
+  color: var(--grayLight-color);
+}
+
+.field {
+  width: 100%;
+  max-width: 295px;
+  height: 44px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  outline: none;
+  color: var(--whitePrimary-color);
+  background: var(--grayBlack-color);
+}
+
+.nameField {
+  padding: 14px 14px 14px 65px;
+}
+
+.emailField {
+  padding: 14px 14px 14px 53px;
+}
+
+.passwordField {
+  padding: 14px 14px 14px 86px;
+}
+
+.errorFeedback {
+  font-size: 10px;
+  color: red;
+  padding: 4px 0px 0px 14px;
+}
+
+.feedbackMessage {
+  font-size: 10px;
+  color: var(--green-color);
+  padding: 4px 0px 0px 14px;
+}
+
+.icon {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  cursor: pointer;
+  stroke: var(--blackLight-color);
+  fill: none;
+}
+
+@media (min-width: 768px) {
+  .container {
+    gap: 16px;
+    flex-direction: row;
+    justify-content: center;
+    padding: 32px;
+  }
+  .formBlock {
+    max-width: 704px;
+    height: 960px;
+    padding: 40px 64px;
+  }
+
+  .formContainer {
+    height: 308px;
+  }
+
+  .formGroup {
+    gap: 14px;
+  }
+
+  .fieldContainer {
+    max-width: 472px;
+  }
+
+  .label {
+    top: 16px;
+  }
+
+  .field {
+    max-width: 472px;
+    height: 50px;
+  }
+  .icon {
+    top: 17px;
+    right: 17px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .formBlock {
+    max-width: 600px;
+    height: 736px;
+  }
+}

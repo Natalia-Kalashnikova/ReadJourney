@@ -9,6 +9,7 @@ import Loader from '../Loader/Loader.jsx';
 import Layout from '../Layout/Layout.jsx'
 import { AuthRoute } from '../../hoc/AuthRoute.jsx';
 import { PrivateRoute } from '../../hoc/PrivateRoute.jsx';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = lazy(() => import('../../pages/RegisterPage.jsx'));
 const Login = lazy(() => import('../../pages/LoginPage.jsx'));
