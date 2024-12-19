@@ -4,7 +4,6 @@ import notFoundImg from '../../images/desctop-default-image@2x.jpg';
 import { useDispatch } from 'react-redux';
 import { removeBookFromCollection } from '../../redux/books/booksOperations.js';
 import FallbackImage from '../FallbackImage/FallbackImage.jsx';
-import BookDetails from '../BookDetails/BookDetails.jsx';
 
 const BookCard=({ book, openLoginModal, currentPage = false })=> {
   const dispatch = useDispatch();
@@ -33,14 +32,14 @@ const BookCard=({ book, openLoginModal, currentPage = false })=> {
         </FallbackImage>
           )}          
           <div className={css.detailsContainer}>
-              <BookDetails className={
+              <div className={
             currentPage === 'MyLibrary'
               ? `${css.bookDetails} ${css.bookDetailsTrue}`
               : css.bookDetails
           }>                  
               <h3 className={css.title}>{book.title}</h3>
               <p className={css.author}>{book.author}</p>
-              </BookDetails>
+              </div>
         {currentPage === 'MyLibrary' && (
           <button className={css.deleteButton} onClick={handleDeleteClick}>
             <svg width={28} height={28}>

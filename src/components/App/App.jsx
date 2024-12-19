@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Register = lazy(() => import('../../pages/RegisterPage.jsx'));
 const Login = lazy(() => import('../../pages/LoginPage.jsx'));
-const Recommended = lazy(() => import('../../pages/RegisterPage.jsx'));
+const Recommended = lazy(() => import('../../pages/RecommendedPage.jsx'));
 const Library = lazy(() => import('../../pages/MyLibraryPage.jsx'));
 const Reading = lazy(() => import('../../pages/ReadingPage.jsx'));
 

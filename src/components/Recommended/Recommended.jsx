@@ -54,8 +54,7 @@ const Recommended = () => {
   const openLoginModal = book => {
     setModalOpen(true);
     setBookData(book);
-    };
-    
+  };
       if (document.activeElement instanceof HTMLElement) {
     document.activeElement.blur();
   }

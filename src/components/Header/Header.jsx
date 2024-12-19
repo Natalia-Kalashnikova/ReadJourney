@@ -8,6 +8,7 @@ import Sidebar from '../Sidebar/Sidebar.jsx';
 import Logo from '../Logo/Logo.jsx';
 import { toast } from 'react-toastify';
 import css from './Header.module.css';
+import sprite from '../../images/sprite.svg';
 
 const Header=()=> {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,7 +22,7 @@ const Header=()=> {
       await dispatch(logOutUser()).unwrap();
       navigate('/register');
     } catch (error) {
-      console.error('Logout error:', error); 
+      console.error('Logout error:', error);
       toast.error('Logout unsuccessful. An error occurred');
     }
   };
@@ -35,12 +36,9 @@ const Header=()=> {
       <div className={css.headerInner}>
         <Link to="/recommended">
           <Logo />
-              </Link>
+        </Link>
               
-        <nav
-          className={`${css.navContainer} ${
-            isMenuOpen && css.navContainerVisible
-          }`}
+        <nav className={`${css.navContainer} ${isMenuOpen && css.navContainerVisible}`}
         >
           <NavLink
             to="/recommended"
@@ -62,12 +60,12 @@ const Header=()=> {
         <div className={css.userInfoContainer}>
           <div className={css.avatarWrapper}>{firstLetterAvatar}</div>
           <p className={css.username}>{name}</p>
-          <button className={css.logoutButton} onClick={handleButtonClick}>
-            Log out
-          </button>
+<button className={css.actionButton} onClick={handleButtonClick}>
+  Log out
+</button>
           <button className={css.menuToggle} onClick={toggleMenu}>
             <svg width={28} height={28}>
-              <use href="#icon-menu" />
+              <use href={`${sprite}#icon-menu`} />
             </svg>
           </button>
         </div>
