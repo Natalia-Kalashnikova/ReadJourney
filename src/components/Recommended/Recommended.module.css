@@ -1,0 +1,27 @@
+.libraryHeading {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.14;
+}
+
+.sectionContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 27px 20px;
+}
+
+@media (min-width: 768px) {
+  .libraryHeading {
+    font-size: 28px;
+
+    .sectionContainer {
+      margin-bottom: 20px;
+    }
+  }
+}

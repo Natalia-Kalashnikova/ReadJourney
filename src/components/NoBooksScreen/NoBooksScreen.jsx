@@ -4,7 +4,7 @@ import imgBooksMob from '../../images/like-mobil.png';
 import imgBooksMob2x from '../../images/like-mobil@2x.png';
 import css from './NoBooksScreen.module.css';
 
-const NoBooksScreen=({ purt })=> {
+const NoBooksScreen=({ messageType })=> {
   return (
     <div className={css.container}>
       <picture className={css.picture}>
@@ -18,12 +18,12 @@ const NoBooksScreen=({ purt })=> {
         />
         <img className={css.img} src={imgBooksDesc} alt="stack books" />
       </picture>
-      {purt === 'Recomended' && (
+      {messageType === 'Recommended' && (
         <p className={css.message}>
           Oops <span className={css.errorText}>unfortunately</span> nothing was found
         </p>
       )}
-      {purt === 'MyLibraryBooks' && (
+      {messageType === 'MyLibraryBooks' && (
         <p className={css.message}>
           To start training, add <span className={css.errorText}>some of your books</span> or
           from the recommended ones

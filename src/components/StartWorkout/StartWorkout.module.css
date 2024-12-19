@@ -1,0 +1,133 @@
+.container {
+  width: 100%;
+  max-width: 295px;
+  min-height: 244px;
+  border-radius: 12px;
+  background: var(--grayBlack-color);
+  padding: 20px;
+}
+
+.startWorkoutTitle {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.argumentsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stepContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.stepNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blackLight-color);
+  background: var(--whitePrimary-color);
+}
+
+.stepDescription {
+  width: 190px;
+}
+
+.textTwo {
+  width: 200px;
+}
+
+.descriptionSpan {
+  color: var(--grayLight-color);
+}
+
+.linkTo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--grayLight-color);
+  margin: auto 0;
+}
+
+.linkTo:hover::after,
+.linkTo:focus::after {
+  color: red;
+}
+
+.libraryText {
+  position: relative;
+  font-size: 12px;
+  transition: color 0.3s linear;
+}
+
+.libraryText::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  height: 1px;
+  background: var(--grayLight-color);
+  transition: background-color 0.3s linear;
+}
+
+.libraryText:hover,
+.libraryText:focus {
+  color: var(--whitePrimary-color);
+  .libraryText::after {
+    background-color: var(--whitePrimary-color);
+  }
+}
+
+.arrowSvg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.25s ease;
+}
+
+.arrowSvg:hover,
+.arrowSvg:focus {
+  transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 313px;
+    height: 272px;
+  }
+  .startWorkoutTitle {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+  .argumentsBlock {
+    margin-bottom: 26px;
+  }
+  .stepNumber {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+  .libraryText {
+    font-size: 14px;
+  }
+  .arrowSvg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    margin-bottom: 20px;
+  }
+}

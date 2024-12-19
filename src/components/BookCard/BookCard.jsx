@@ -8,6 +8,7 @@ import BookDetails from '../BookDetails/BookDetails.jsx';
 
 const BookCard=({ book, openLoginModal, currentPage = false })=> {
   const dispatch = useDispatch();
+
   const handleDeleteClick = () => {
     dispatch(removeBookFromCollection(book._id));
   };
@@ -32,9 +33,11 @@ const BookCard=({ book, openLoginModal, currentPage = false })=> {
         </FallbackImage>
           )}          
           <div className={css.detailsContainer}>
-              <BookDetails className={`${css.bookDetails} ${
-            currentPage === 'MyLibrary' ? css.pageTrue : ''
-          }`}>                  
+              <BookDetails className={
+            currentPage === 'MyLibrary'
+              ? `${css.bookDetails} ${css.bookDetailsTrue}`
+              : css.bookDetails
+          }>                  
               <h3 className={css.title}>{book.title}</h3>
               <p className={css.author}>{book.author}</p>
               </BookDetails>
