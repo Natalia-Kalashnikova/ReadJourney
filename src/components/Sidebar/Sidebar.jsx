@@ -1,8 +1,8 @@
+import sprite from '../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { logOutUser } from '../../redux/auth/authOperations.js';
-import sprite from '../../images/sprite.svg';
 import { NavigationLink } from '../Header/Header.styled.js';
 import Button from '../Button/Button.jsx';
 import {
@@ -11,7 +11,7 @@ import {
   MenuContainer,
 } from './Sidebar.styled.js';
 
-const Sidebar=({ isOpen, onClose })=> {
+const Sidebar = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const Sidebar=({ isOpen, onClose })=> {
       await dispatch(logOutUser()).unwrap();
       navigate('/register');
     } catch (error) {
-      console.error('Logout error:', error); 
+      console.error('Logout error:', error);
       toast.error('Logout unsuccessful. An error occurred');
     }
   };
@@ -43,10 +43,6 @@ const Sidebar=({ isOpen, onClose })=> {
       </div>
     </MenuContainer>
   );
-}
+};
 
 export default Sidebar;
-
-
-
-

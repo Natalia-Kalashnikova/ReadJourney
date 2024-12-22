@@ -11,7 +11,7 @@ import {
   SuccessMessage,
 } from '../../BookDetails/BookDetails.styled.js';
 
-const BookReadModal=({ closeModals })=> {
+const BookReadModal = ({ closeModals }) => {
   return (
     <ModalContainer>
       <CloseButton onClick={closeModals}>
@@ -28,7 +28,6 @@ const BookReadModal=({ closeModals })=> {
           srcSet={`${books} 1x, ${books2x} 2x`}
           media="(min-width: 766px)"
         />
-
         <Img src={books} alt="stack books" />
       </picture>
       <SuccessMessage>The book is read</SuccessMessage>
@@ -38,6 +37,6 @@ const BookReadModal=({ closeModals })=> {
       </Heading>
     </ModalContainer>
   );
-}
+};
 
 export default BookReadModal;

@@ -1,9 +1,7 @@
-import Button from '../Button/Button.jsx';
-import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
-import DashboardWrapper from '../DashboardWrapper/DashboardWrapper.jsx';
-import { ErrorMessage, Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
+import { ErrorMessage, Form, Formik } from 'formik';
 import {
   fetchBookDetails,
   readingStart,
@@ -13,19 +11,21 @@ import {
   selectInfoCurrentBook,
   selectReadBook,
 } from '../../redux/books/booksSelectors.js';
-import * as Yup from 'yup';
-import { FormField, Forma } from './ReadingPanel.styled.js';
+import Button from '../Button/Button.jsx';
+import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
+import DashboardWrapper from '../DashboardWrapper/DashboardWrapper.jsx';
+import ProgressBoard from '../ProgressBoard/ProgressBoard.jsx';
+import DiaryHeader from '../DiaryHeader/DiaryHeader.jsx';
+import ReadingAnalysis from '../ReadingAnalysis/ReadingAnalysis.jsx';
+import ReadingDiary from '../ReadingDiary/ReadingDiary.jsx';
+import BookReadModal from '../Modal/BookReadModal/BookReadModal.jsx';
 import {
   FieldContainer,
   FormContainer,
   Heading,
   Label,
 } from '../Dashboard/Dashboard.styled.js';
-import ProgressBoard from '../ProgressBoard/ProgressBoard.jsx';
-import DiaryHeader from '../DiaryHeader/DiaryHeader.jsx';
-import ReadingAnalysis from '../ReadingAnalysis/ReadingAnalysis.jsx';
-import ReadingDiary from '../ReadingDiary/ReadingDiary.jsx';
-import BookReadModal from '../Modal/BookReadModal/BookReadModal.jsx';
+import { FormField, Forma } from './ReadingPanel.styled.js';
 
 const initialValues = {
   page: '',
@@ -38,7 +38,7 @@ const schema = Yup.object({
     .transform((value, originalValue) => originalValue.replace(/\s/g, '')),
 });
 
-const ReadingPanel=({ selectedBook, onReadChange })=> {
+const ReadingPanel = ({ selectedBook, onReadChange }) => {
   const dailyReadings = {};
   let totalReadPages = 0;
   const [isRendered, setIsRendered] = useState(false);
@@ -142,8 +142,7 @@ const ReadingPanel=({ selectedBook, onReadChange })=> {
         <Formik
           initialValues={initialValues}
           validationSchema={schema}
-          onSubmit={handleSubmit}
-        >
+          onSubmit={handleSubmit}>
           {({ errors, touched }) => (
             <Form>
               <FormContainer>
@@ -188,6 +187,6 @@ const ReadingPanel=({ selectedBook, onReadChange })=> {
       </PortalModal>
     </DashboardWrapper>
   );
-}
+};
 
 export default ReadingPanel;

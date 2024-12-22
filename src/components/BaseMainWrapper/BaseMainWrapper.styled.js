@@ -1,13 +1,14 @@
-import color from '../../global/GlobalColors.js';
 import styled from 'styled-components';
+import color from '../../global/GlobalColors.js';
 
 export const MainWrapper = styled.div`
   width: 100%;
   max-width: 335px;
   height: 100%;
-  border-radius: 30px;
-  background: ${color.blackLight_color};
   padding: 40px 20px;
+
+  background: ${color.blackLight_color};
+  border-radius: 30px;
 
   @media (min-width: 768px) {
     max-width: 704px;

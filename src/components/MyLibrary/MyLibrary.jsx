@@ -1,14 +1,14 @@
-import Container  from '../Container/Container.jsx';
+import Container from '../Container/Container.jsx';
 import Books from '../Books/Books.jsx';
 import Dashboard from '../Dashboard/Dashboard.jsx';
 
-const MyLibrary=()=> {
+const MyLibrary = () => {
   return (
-    <Container >
+    <Container>
       <Dashboard />
       <Books />
     </Container>
   );
-}
+};
 
 export default MyLibrary;

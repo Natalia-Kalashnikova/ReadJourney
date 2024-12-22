@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom';
-import  { useEffect } from 'react';
+import { useEffect } from 'react';
 import { ModalContainer } from './PortalModal.styled';
 
-const PortalModal=({ active, setActive, children })=> {
+const PortalModal = ({ active, setActive, children }) => {
   useEffect(() => {
     const closeModal = e => {
       if (e.key === 'Escape') {
@@ -35,11 +35,11 @@ const PortalModal=({ active, setActive, children })=> {
   return ReactDOM.createPortal(
     <ModalContainer
       className={active ? 'active' : ''}
-      onClick={() => setActive(false)}
-    >
+      onClick={() => setActive(false)}>
       <div onClick={e => e.stopPropagation()}>{children}</div>
     </ModalContainer>,
     document.getElementById('modal')
   );
-}
-export default PortalModal; 
+};
+
+export default PortalModal;

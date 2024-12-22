@@ -10,12 +10,12 @@ import {
 
 const options = ['Unread', 'In progress', 'Done', 'All books'];
 
-const DropdownMenu=({
+const DropdownMenu = ({
   selectedBooks,
   handleSelectedCategory,
   isOpen,
   setIsOpen,
-})=> {
+}) => {
   const selectRef = useRef(null);
 
   useEffect(() => {
@@ -57,6 +57,6 @@ const DropdownMenu=({
       </OptionList>
     </DropdownContainer>
   );
-}
+};
 
 export default DropdownMenu;

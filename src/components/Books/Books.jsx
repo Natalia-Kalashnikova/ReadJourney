@@ -1,16 +1,16 @@
-import BookDetails from '../BookDetails/BookDetails.jsx';
-import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
-import BaseMainWrapper from '../BaseMainWrapper/BaseMainWrapper.jsx';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOwnBooks } from '../../redux/books/booksOperations.js';
 import { selectOwnBooks } from '../../redux/books/booksSelectors.js';
-import { BookList, LibraryContainer, LibraryHeading } from './Books.styled';
+import BookDetails from '../BookDetails/BookDetails.jsx';
+import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
+import BaseMainWrapper from '../BaseMainWrapper/BaseMainWrapper.jsx';
 import DropdownMenu from '../DropdownMenu/DropdownMenu.jsx';
 import NoBooksScreen from '../NoBooksScreen/NoBooksScreen.jsx';
 import BookCard from '../BookCard/BookCard.jsx';
+import { BookList, LibraryContainer, LibraryHeading } from './Books.styled';
 
-const Books=()=> {
+const Books = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [bookData, setBookData] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -72,6 +72,6 @@ const Books=()=> {
       </PortalModal>
     </BaseMainWrapper>
   );
-}
+};
 
 export default Books;

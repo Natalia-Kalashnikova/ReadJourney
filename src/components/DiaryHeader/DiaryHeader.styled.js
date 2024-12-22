@@ -1,5 +1,5 @@
-import color from '../../global/GlobalColors.js';
 import styled from 'styled-components';
+import color from '../../global/GlobalColors.js';
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -25,6 +25,7 @@ export const HeaderButton = styled.button`
   background: transparent;
 
   transition: transform 0.25s linear;
+
   &:hover,
   &:focus {
     transform: scale(1.1);
@@ -34,8 +35,11 @@ export const HeaderButton = styled.button`
 export const HeaderSvg = styled.svg`
   width: 16px;
   height: 16px;
-  fill: ${props => (props.diarystat ? color.grayLight_color : color.whitePrimary_color)};
-  stroke: ${props => (props.diarystat ? color.grayLight_color : color.whitePrimary_color)};
+
+  fill: ${props =>
+    props.diarystat ? color.grayLight_color : color.whitePrimary_color};
+  stroke: ${props =>
+    props.diarystat ? color.grayLight_color : color.whitePrimary_color};
 
   @media (min-width: 768px) {
     width: 20px;

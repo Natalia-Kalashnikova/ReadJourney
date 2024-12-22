@@ -10,7 +10,7 @@ import {
   StarImage,
 } from './ProgressBoard.styled.js';
 
-const ProgressBoard=()=> {
+const ProgressBoard = () => {
   return (
     <ProgressContainer>
       <ProgressTitle>Progress</ProgressTitle>
@@ -34,6 +34,6 @@ const ProgressBoard=()=> {
       </div>
     </ProgressContainer>
   );
-}
+};
 
 export default ProgressBoard;

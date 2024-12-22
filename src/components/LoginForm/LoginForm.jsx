@@ -1,11 +1,14 @@
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
-import sprite from '../../images/sprite.svg';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../../redux/auth/authOperations.js';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 import { toast } from 'react-toastify';
+import sprite from '../../images/sprite.svg';
+import { useState } from 'react';
+import { loginUser } from '../../redux/auth/authOperations.js';
+import LogoTitle from '../LogoTitle/LogoTitle.jsx';
+import LoginSubmitBlock from '../LoginSubmitBlock/LoginSubmitBlock.jsx';
+import AuthorizationImage from '../AuthImage/AuthImage.jsx';
 import {
   Container,
   ErrorFeedback,
@@ -17,10 +20,7 @@ import {
   Label,
   StyledField,
   FormContainer,
-} from './Auth.styled';
-import LogoTitle from '../LogoTitle/LogoTitle.jsx';
-import LoginSubmitBlock from '../LoginSubmitBlock/LoginSubmitBlock.jsx';
-import AuthorizationImage from '../AuthImage/AuthImage.jsx';
+} from './Auth.styled.js';
 
 const initialValues = {
   email: '',
@@ -36,7 +36,7 @@ const schema = Yup.object({
     .min(7, 'Password must be at least 7 characters'),
 });
 
-const LoginForm=()=> {
+const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
@@ -63,12 +63,10 @@ const LoginForm=()=> {
     <Container>
       <FormBlock>
         <LogoTitle />
-
         <Formik
           initialValues={initialValues}
           validationSchema={schema}
-          onSubmit={handleSubmit}
-        >
+          onSubmit={handleSubmit}>
           {({ errors, touched }) => (
             <Form>
               <FormContainer>
@@ -80,6 +78,7 @@ const LoginForm=()=> {
                       name="email"
                       type="email"
                       placeholder="nik@google.com"
+                      autoComplete="username"
                       error={errors.email && touched.email ? 'true' : 'false'}
                       paddingleft="53px"
                       style={{
@@ -114,6 +113,7 @@ const LoginForm=()=> {
                       name="password"
                       type={showPassword ? 'text' : 'password'}
                       placeholder="********"
+                      autoComplete="current-password"
                       error={
                         errors.password && touched.password ? 'true' : 'false'
                       }
@@ -127,7 +127,6 @@ const LoginForm=()=> {
                             : 'defaultColor',
                       }}
                     />
-
                     {errors.password && touched.password ? (
                       <Icon width={20} height={20}>
                         <use href={`${sprite}#icon-pajamas_error`} />
@@ -143,8 +142,7 @@ const LoginForm=()=> {
                         onMouseDown={e => {
                           e.preventDefault();
                           togglePasswordVisibility();
-                        }}
-                      >
+                        }}>
                         <use href={`${sprite}#icon-eye`} />
                       </Icon>
                     ) : (
@@ -154,12 +152,10 @@ const LoginForm=()=> {
                         onMouseDown={e => {
                           e.preventDefault();
                           togglePasswordVisibility();
-                        }}
-                      >
+                        }}>
                         <use href={`${sprite}#icon-eye-off`} />
                       </Icon>
                     )}
-
                     {touched.password && !errors.password && (
                       <FeedbackMessage>Password is secure</FeedbackMessage>
                     )}
@@ -172,11 +168,9 @@ const LoginForm=()=> {
           )}
         </Formik>
       </FormBlock>
-
       <AuthorizationImage />
     </Container>
   );
-}
+};
 
 export default LoginForm;
-

@@ -1,12 +1,15 @@
-import Button from '../Button/Button.jsx';
-import DashboardWrapper from '../DashboardWrapper/DashboardWrapper.jsx';
-import { Form, Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
 import { toast } from 'react-toastify';
 import { addNewBook, fetchOwnBooks } from '../../redux/books/booksOperations';
 import { selectOwnBooks } from '../../redux/books/booksSelectors';
-import * as Yup from 'yup';
+import Button from '../Button/Button.jsx';
+import DashboardWrapper from '../DashboardWrapper/DashboardWrapper.jsx';
+import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
+import RecommendedBooks from '../RecommendedBooks/RecommendedBooks.jsx';
+import AddedSuccessfullyModal from '../Modal/AddedSuccessfullyModal/AddedSuccessfullyModal.jsx';
 import {
   FieldContainer,
   FormContainer,
@@ -15,9 +18,6 @@ import {
   Label,
   TitleError,
 } from './Dashboard.styled';
-import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
-import RecommendedBooks from '../RecommendedBooks/RecommendedBooks.jsx';
-import AddedSuccessfullyModal from '../Modal/AddedSuccessfullyModal/AddedSuccessfullyModal.jsx';
 
 const initialValues = {
   title: '',
@@ -34,7 +34,7 @@ const schema = Yup.object({
     .transform((value, originalValue) => originalValue.replace(/\s/g, '')),
 });
 
-const Dashboard=()=> {
+const Dashboard = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [bookExists, setBookExists] = useState(false);
   const ownLibrary = useSelector(selectOwnBooks);
@@ -72,8 +72,7 @@ const Dashboard=()=> {
         <Formik
           initialValues={initialValues}
           validationSchema={schema}
-          onSubmit={handleSubmit}
-        >
+          onSubmit={handleSubmit}>
           {({ errors, touched, resetForm }) => (
             <Form>
               <FormContainer>
@@ -126,6 +125,6 @@ const Dashboard=()=> {
       </PortalModal>
     </DashboardWrapper>
   );
-}
+};
 
 export default Dashboard;

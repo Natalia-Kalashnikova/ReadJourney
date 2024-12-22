@@ -1,6 +1,6 @@
-import { ErrorMessage, Field } from 'formik';
-import color from '../../global/GlobalColors.js';
 import styled from 'styled-components';
+import color from '../../global/GlobalColors.js';
+import { ErrorMessage, Field } from 'formik';
 
 export const Container = styled.div`
   display: flex;
@@ -21,9 +21,10 @@ export const FormBlock = styled.div`
   width: 100%;
   max-width: 335px;
   min-height: 411px;
+  padding: 20px 20px 40px 20px;
+
   background: ${color.blackLight_color};
   border-radius: 30px;
-  padding: 20px 20px 40px 20px;
 
   @media (min-width: 768px) {
     max-width: 704px;
@@ -59,6 +60,7 @@ export const FormGroup = styled.div`
 
 export const FieldContainer = styled.div`
   position: relative;
+
   max-width: 295px;
 
   @media (min-width: 768px) {
@@ -70,6 +72,7 @@ export const Label = styled.label`
   position: absolute;
   top: 13px;
   left: 14px;
+
   color: ${color.grayLight_color};
 
   @media (min-width: 768px) {
@@ -80,16 +83,17 @@ export const Label = styled.label`
 export const StyledField = styled(Field)`
   width: 100%;
   max-width: 295px;
-
   height: 44px;
+  padding: 14px;
+  padding-left: ${props => props.paddingleft || '65px'};
+
+  outline: none;
+  color: ${color.whitePrimary_color};
+
+  background: ${color.grayBlack_color};
   border: 1px solid
     ${props => (props.error === 'true' ? 'red' : 'rgba(18, 20, 23, 0.1)')};
   border-radius: 12px;
-  padding: 14px;
-  padding-left: ${props => props.paddingleft || '65px'};
-  outline: none;
-  color: ${color.whitePrimary_color};
-  background: ${color.grayBlack_color};
 
   @media (min-width: 768px) {
     max-width: 472px;
@@ -103,9 +107,10 @@ export const Icon = styled.svg`
   position: absolute;
   top: 13px;
   right: 13px;
-  cursor: pointer;
+
   stroke: ${color.blackLight_color};
   fill: none;
+  cursor: pointer;
 
   @media (min-width: 768px) {
     top: 17px;
@@ -114,12 +119,15 @@ export const Icon = styled.svg`
 `;
 
 export const ErrorFeedback = styled(ErrorMessage)`
+  padding: 4px 0px 0px 14px;
+
   font-size: 10px;
   color: red;
-  padding: 4px 0px 0px 14px;
 `;
+
 export const FeedbackMessage = styled.p`
+  padding: 4px 0px 0px 14px;
+
   font-size: 10px;
   color: ${color.green_color};
-  padding: 4px 0px 0px 14px;
 `;

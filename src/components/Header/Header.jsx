@@ -1,11 +1,13 @@
-import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { logOutUser } from '../../redux/auth/authOperations.js';
 import { selectUser } from '../../redux/auth/authSelectors.js';
+import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
+import Logo from '../Logo/Logo.jsx';
+import Sidebar from '../Sidebar/Sidebar.jsx';
 import sprite from '../../images/sprite.svg';
-import { toast } from 'react-toastify';
 import {
   AvatarWrapper,
   HeaderContainer,
@@ -17,10 +19,8 @@ import {
   UserInfoContainer,
   Username,
 } from './Header.styled.js';
-import Logo from '../Logo/Logo.jsx';
-import Sidebar from '../Sidebar/Sidebar.jsx';
 
-const Header=()=> {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const Header=()=> {
       await dispatch(logOutUser()).unwrap();
       navigate('/login');
     } catch (error) {
-      console.error('Logout error:', error); 
+      console.error('Logout error:', error);
       toast.error('Logout unsuccessful. An error occurred');
     }
   };
@@ -69,13 +69,10 @@ const Header=()=> {
       </HeaderInner>
 
       <PortalModal active={isMenuOpen} setActive={setIsMenuOpen}>
-        <Sidebar
-          isOpen={isMenuOpen}
-          onClose={() => setIsMenuOpen(false)}
-        />
+        <Sidebar isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       </PortalModal>
     </HeaderContainer>
   );
-}
+};
 
 export default Header;

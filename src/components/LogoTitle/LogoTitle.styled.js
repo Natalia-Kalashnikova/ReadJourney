@@ -1,5 +1,5 @@
-import color from '../../global/GlobalColors.js';
 import styled from 'styled-components';
+import color from '../../global/GlobalColors.js';
 
 export const Wrapper = styled.div`
   margin-bottom: 20px;

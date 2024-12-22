@@ -7,7 +7,7 @@ import {
   HeaderTitle,
 } from './DiaryHeader.styled';
 
-const DiaryHeader=({ diaryStat, setDiaryStat })=>{
+const DiaryHeader = ({ diaryStat, setDiaryStat }) => {
   const handleDiaryStatistic = e => {
     if (e) setDiaryStat(false);
     if (!e) setDiaryStat(true);
@@ -34,6 +34,6 @@ const DiaryHeader=({ diaryStat, setDiaryStat })=>{
       </ButtonContainer>
     </HeaderContainer>
   );
-}
+};
 
 export default DiaryHeader;

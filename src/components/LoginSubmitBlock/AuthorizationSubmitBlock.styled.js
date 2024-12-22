@@ -1,15 +1,18 @@
+import styled from 'styled-components';
 import color from '../../global/GlobalColors.js';
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
 
 export const ActionButton = styled.button`
-  border-radius: 30px;
-  color: ${color.blackLight_color};
+  margin-right: 14px;
+  padding: ${props => (props.$log === 'login' ? '12px 45px' : '12px 29px')};
+
   font-size: 14px;
   font-weight: 700;
   line-height: 1;
-  margin-right: 14px;
-  padding: ${props => (props.$log === 'login' ? '12px 45px' : '12px 29px')};
+  color: ${color.blackLight_color};
+
+  border-radius: 30px;
+
   transition: color 0.3s linear, background 0.3s linear;
 
   &:hover,
@@ -20,18 +23,21 @@ export const ActionButton = styled.button`
   }
 
   @media (min-width: 768px) {
-    font-size: 20px;
     margin-right: 20px;
     padding: 16px 54px;
+
+    font-size: 20px;
   }
 `;
 
 export const ActionLink = styled(NavLink)`
   position: relative;
+
   font-weight: 500;
   font-size: 12px;
   letter-spacing: -0.2px;
   color: ${color.grayLight_color};
+
   transition: color 0.3s linear;
 
   &::after {
@@ -40,10 +46,13 @@ export const ActionLink = styled(NavLink)`
     left: 0;
     right: 0;
     bottom: -3px;
+
     height: 1px;
     background: ${color.grayLight_color};
+
     transition: background 0.3s linear;
   }
+
   &:hover,
   &:focus {
     color: ${color.whitePrimary_color};

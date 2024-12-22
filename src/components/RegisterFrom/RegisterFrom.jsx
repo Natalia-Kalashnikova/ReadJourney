@@ -1,11 +1,14 @@
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
 import sprite from '../../images/sprite.svg';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../../redux/auth/authOperations.js';
+import * as Yup from 'yup';
+import { Formik, Form } from 'formik';
 import { toast } from 'react-toastify';
+import { registerUser } from '../../redux/auth/authOperations.js';
+import RegSubmitBlock from '../RegSubmitBlock/RegSubmitBlock.jsx';
+import AuthorizationImage from '../AuthImage/AuthImage.jsx';
+import LogoTitle from '../LogoTitle/LogoTitle.jsx';
 import {
   Container,
   ErrorFeedback,
@@ -17,10 +20,7 @@ import {
   Icon,
   Label,
   StyledField,
-} from '../LoginForm/Auth.styled.jsx';
-import RegSubmitBlock from '../RegSubmitBlock/RegSubmitBlock.jsx';
-import AuthorizationImage from '../AuthImage/AuthImage.jsx';
-import LogoTitle from '../LogoTitle/LogoTitle.jsx';
+} from '../LoginForm/Auth.styled.js';
 
 const initialValues = {
   name: '',
@@ -40,7 +40,7 @@ const schema = Yup.object({
     .min(7, 'Password must be at least 7 characters'),
 });
 
-const RegisterForm=()=> {
+const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
@@ -70,8 +70,7 @@ const RegisterForm=()=> {
         <Formik
           initialValues={initialValues}
           validationSchema={schema}
-          onSubmit={handleSubmit}
-        >
+          onSubmit={handleSubmit}>
           {({ errors, touched }) => (
             <Form>
               <FormContainer>
@@ -117,6 +116,7 @@ const RegisterForm=()=> {
                       name="email"
                       type="email"
                       placeholder="nik@google.com"
+                      autoComplete="username"
                       error={errors.email && touched.email ? 'true' : 'false'}
                       paddingleft="53px"
                       style={{
@@ -151,6 +151,7 @@ const RegisterForm=()=> {
                       name="password"
                       type={showPassword ? 'text' : 'password'}
                       placeholder="********"
+                      autoComplete="current-password"
                       paddingleft="86px"
                       style={{
                         borderColor:
@@ -177,8 +178,7 @@ const RegisterForm=()=> {
                         onMouseDown={e => {
                           e.preventDefault();
                           togglePasswordVisibility();
-                        }}
-                      >
+                        }}>
                         <use href={`${sprite}#icon-eye`} />
                       </Icon>
                     ) : (
@@ -188,8 +188,7 @@ const RegisterForm=()=> {
                         onMouseDown={e => {
                           e.preventDefault();
                           togglePasswordVisibility();
-                        }}
-                      >
+                        }}>
                         <use href={`${sprite}#icon-eye-off`} />
                       </Icon>
                     )}
@@ -212,6 +211,6 @@ const RegisterForm=()=> {
       <AuthorizationImage />
     </Container>
   );
-}
+};
 
 export default RegisterForm;

@@ -12,7 +12,7 @@ import {
   StyledCircle,
 } from './ReadingAnalysis.styled.js';
 
-const ReadingAnalysis=({ totalReadPages })=> {
+const ReadingAnalysis = ({ totalReadPages }) => {
   const InfoAboutBook = useSelector(selectInfoCurrentBook);
 
   const roundToTwoDecimalPlaces = () => {
@@ -51,6 +51,6 @@ const ReadingAnalysis=({ totalReadPages })=> {
       </AnalysisContainer>
     </>
   );
-}
+};
 
 export default ReadingAnalysis;

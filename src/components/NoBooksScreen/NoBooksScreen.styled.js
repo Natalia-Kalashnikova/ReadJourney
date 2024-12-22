@@ -1,5 +1,5 @@
-import color from '../../global/GlobalColors.js';
 import styled from 'styled-components';
+import color from '../../global/GlobalColors.js';
 
 export const Container = styled.div`
   display: flex;
@@ -12,6 +12,7 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     margin: 86px 0 120px 0;
   }
+
   @media (min-width: 1440px) {
     margin: 147px 0 0;
   }

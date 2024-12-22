@@ -2,15 +2,16 @@ import styled from 'styled-components';
 import color from '../../global/GlobalColors.js';
 
 export const ImgWrapper = styled.div`
-  width: 100%;
-  max-width: 335px;
-  min-height: 411px;
-  background: ${color.blackLight_color};
-  border-radius: 30px;
-  padding: 0 20px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  width: 100%;
+  max-width: 335px;
+  min-height: 411px;
+  padding: 0 20px;
+
+  background: ${color.blackLight_color};
+  border-radius: 30px;
 
   @media (min-width: 768px) {
     display: none;
@@ -38,5 +39,3 @@ export const AuthImage = styled.img`
     display: block;
   }
 `;
-
-

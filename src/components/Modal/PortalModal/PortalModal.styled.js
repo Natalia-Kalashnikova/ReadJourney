@@ -2,16 +2,19 @@ import styled from 'styled-components';
 
 export const ModalContainer = styled.div`
   position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(20, 20, 20, 0.6);
+
   overflow: auto;
-  z-index: 5;
+
+  background-color: rgba(20, 20, 20, 0.6);
   transition: all 0.3s ease;
 
   transform: translateY(-100%);

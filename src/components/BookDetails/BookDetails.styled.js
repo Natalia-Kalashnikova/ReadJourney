@@ -1,17 +1,19 @@
-import color from '../../global/GlobalColors.js';
 import styled from 'styled-components';
+import color from '../../global/GlobalColors.js';
 
 export const StyledModal = styled.div`
   position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 335px;
   height: 100%;
+  padding: 40px;
+
   background: ${color.blackLight_color};
   border-radius: 12px;
-  padding: 40px;
 
   @media (min-width: 768px) {
     width: 500px;
@@ -23,10 +25,12 @@ export const StyledModal = styled.div`
 export const CloseButton = styled.button`
   position: absolute;
   top: 16px;
+
   right: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   stroke: ${color.whitePrimary_color};
   background: transparent;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -40,8 +44,9 @@ export const CloseButton = styled.button`
 export const CoverImage = styled.img`
   width: 140px;
   height: 213px;
-  border-radius: 8px;
   margin-bottom: 16px;
+
+  border-radius: 8px;
 
   @media (min-width: 768px) {
     width: 153px;
@@ -50,15 +55,16 @@ export const CoverImage = styled.img`
 `;
 
 export const Title = styled.h2`
+  margin-bottom: 2px;
+
   text-align: center;
   font-size: 18px;
   line-height: 1;
-  margin-bottom: 2px;
 
   @media (min-width: 768px) {
-    font-size: 20px;
     max-width: 400px;
 
+    font-size: 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -66,14 +72,15 @@ export const Title = styled.h2`
 `;
 
 export const AuthorInfo = styled.p`
-  font-size: 12px;
-  color: ${color.grayLight_color};
   margin-bottom: 4px;
 
+  font-size: 12px;
+  color: ${color.grayLight_color};
+
   @media (min-width: 768px) {
-    font-size: 14px;
     max-width: 400px;
 
+    font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -81,8 +88,8 @@ export const AuthorInfo = styled.p`
 `;
 
 export const PageCount = styled.p`
-  font-size: 10px;
   margin-bottom: 20px;
+  font-size: 10px;
 
   @media (min-width: 768px) {
     margin-bottom: 32px;
@@ -102,13 +109,14 @@ export const Img = styled.img`
 `;
 
 export const SuccessMessage = styled.h3`
-  font-size: 18px;
-  font-weight: 700;
   margin-bottom: 10px;
 
+  font-size: 18px;
+  font-weight: 700;
+
   @media (min-width: 768px) {
-    font-size: 20px;
     margin-bottom: 14px;
+    font-size: 20px;
   }
 `;
 

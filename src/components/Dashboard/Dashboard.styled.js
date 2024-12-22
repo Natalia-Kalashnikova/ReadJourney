@@ -1,12 +1,14 @@
-import { ErrorMessage, Field } from 'formik';
-import color from '../../global/GlobalColors.js';
 import styled from 'styled-components';
+import color from '../../global/GlobalColors.js';
+import { ErrorMessage, Field } from 'formik';
 
 export const Heading = styled.h3`
-  font-size: 10px;
-  font-weight: 500;
   margin-bottom: 8px;
   margin-left: 14px;
+
+  font-size: 10px;
+  font-weight: 500;
+
   @media (min-width: 768px) {
     font-size: 14px;
   }
@@ -34,6 +36,7 @@ export const Label = styled.label`
   position: absolute;
   top: 14px;
   left: 14px;
+
   font-size: 12px;
   color: ${color.grayLight_color};
 
@@ -46,18 +49,20 @@ export const Label = styled.label`
 export const InputField = styled(Field)`
   width: 100%;
   height: 44px;
-  font-size: 12px;
-  border: none;
-  border-radius: 12px;
   padding: 16px 14px 16px 65px;
+  padding-left: ${props => props.paddindleft || '86px'};
 
+  font-size: 12px;
   outline: none;
   color: ${color.whitePrimary_color};
+
   background: ${color.grayBlack_color};
-  padding-left: ${props => props.paddindleft || '86px'};
+  border: none;
+  border-radius: 12px;
   border: 1px solid
     ${props =>
       props.error === 'true' ? color.focusColor : 'rgba(18, 20, 23, 0.1)'};
+
   @media (min-width: 768px) {
     height: 50px;
     font-size: 14px;
@@ -65,7 +70,8 @@ export const InputField = styled(Field)`
 `;
 
 export const TitleError = styled(ErrorMessage)`
+  padding: 4px 0px 0px 14px;
+
   font-size: 10px;
   color: ${color.focusColor};
-  padding: 4px 0px 0px 14px;
 `;

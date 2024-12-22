@@ -1,5 +1,5 @@
-import color from '../../global/GlobalColors.js';
 import styled from 'styled-components';
+import color from '../../global/GlobalColors.js';
 
 export const RemarkContainer = styled.div`
   display: none;
@@ -10,12 +10,14 @@ export const RemarkContainer = styled.div`
     gap: 14px;
     width: 313px;
     height: 83px;
+    padding: 14px 20px;
+
     border-radius: 12px;
 
     background: ${color.grayBlack_color};
-    padding: 14px 20px;
   }
 `;
+
 export const RemarkText = styled.p`
   width: 219px;
   color: ${color.grayLight_color};

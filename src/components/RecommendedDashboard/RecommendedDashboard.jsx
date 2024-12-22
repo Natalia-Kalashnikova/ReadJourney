@@ -1,11 +1,11 @@
-import Button from '../Button/Button.jsx';
-import DashboardWrapper from '../DashboardWrapper/DashboardWrapper.jsx';
-import { Form, Formik } from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
+import { Form, Formik } from 'formik';
 import { toast } from 'react-toastify';
 import { fetchRecommendedBooks } from '../../redux/books/booksOperations.js';
-import * as Yup from 'yup';
+import Button from '../Button/Button.jsx';
+import DashboardWrapper from '../DashboardWrapper/DashboardWrapper.jsx';
 import {
   FieldContainer,
   FormContainer,
@@ -28,23 +28,23 @@ const schema = Yup.object({
   author: Yup.string(),
 });
 
-const RecommendedDashboard=()=> {
+const RecommendedDashboard = () => {
   const [isRestButtonVisible, setIsRestButtonVisible] = useState(false);
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, {setSubmitting }) => {
-  const { title, author } = values;
+  const handleSubmit = (values, { setSubmitting }) => {
+    const { title, author } = values;
 
-  if (!title && !author) {
-    toast.warn('Kindly complete the form');
-    setSubmitting(false);
-    return;
-  }
+    if (!title && !author) {
+      toast.warn('Kindly complete the form');
+      setSubmitting(false);
+      return;
+    }
 
-  setIsRestButtonVisible(true);
-  dispatch(fetchRecommendedBooks({ title, author }));
-  document.getElementById('page').blur();
-};
+    setIsRestButtonVisible(true);
+    dispatch(fetchRecommendedBooks({ title, author }));
+    document.getElementById('page').blur();
+  };
 
   const handleReset = resetForm => {
     setIsRestButtonVisible(false);
@@ -59,8 +59,7 @@ const RecommendedDashboard=()=> {
         <Formik
           initialValues={initialValues}
           validationSchema={schema}
-          onSubmit={handleSubmit}
-        >
+          onSubmit={handleSubmit}>
           {({ resetForm }) => (
             <Form>
               <FormContainer>
@@ -99,6 +98,6 @@ const RecommendedDashboard=()=> {
       <Remark />
     </DashboardWrapper>
   );
-}
+};
 
 export default RecommendedDashboard;

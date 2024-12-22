@@ -9,9 +9,12 @@ import {
   LibraryName,
   SuccessMessage,
 } from '../../BookDetails/BookDetails.styled.js';
-import { CloseButton, ModalContainer } from '../BookReadModal/BookReadModal.styled.js';
+import {
+  CloseButton,
+  ModalContainer,
+} from '../BookReadModal/BookReadModal.styled.js';
 
-const AddedSuccessfullyModal=({ closeModals })=>{
+const AddedSuccessfullyModal = ({ closeModals }) => {
   return (
     <ModalContainer>
       <CloseButton onClick={closeModals}>
@@ -37,6 +40,6 @@ const AddedSuccessfullyModal=({ closeModals })=>{
       </Heading>
     </ModalContainer>
   );
-}
+};
 
 export default AddedSuccessfullyModal;

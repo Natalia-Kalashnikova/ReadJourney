@@ -2,7 +2,7 @@ import imgBooksDesc from '../../images/book-desctop.png';
 import imgBooksDesc2x from '../../images/book-desctop@2.png';
 import { RemarkContainer, RemarkSpan, RemarkText } from './Remark.styled.jsx';
 
-const Remark=()=> {
+const Remark = () => {
   return (
     <RemarkContainer>
       <picture>
@@ -15,6 +15,6 @@ const Remark=()=> {
       </RemarkText>
     </RemarkContainer>
   );
-}
+};
 
 export default Remark;

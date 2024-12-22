@@ -1,15 +1,16 @@
-import FallbackImage from '../FallbackImage/FallbackImage.jsx';
-import Block from '../Container/Container.jsx';
-import BaseMainWrapper from '../BaseMainWrapper/BaseMainWrapper.jsx';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import notFoundImg from '../../images/desctop-default-image.jpg';
+import sprite from '../../images/sprite.svg';
 import {
   selectInfoCurrentBook,
   selectOwnBooks,
 } from '../../redux/books/booksSelectors.js';
-import notFoundImg from '../../images/desctop-default-image.jpg';
-import sprite from '../../images/sprite.svg';
+import ReadingPanel from '../ReadingPanel/ReadingPanel.jsx';
+import FallbackImage from '../FallbackImage/FallbackImage.jsx';
+import Block from '../Container/Container.jsx';
+import BaseMainWrapper from '../BaseMainWrapper/BaseMainWrapper.jsx';
 import {
   BookAuthor,
   BookContainer,
@@ -19,10 +20,9 @@ import {
   ReadingInfo,
   ReadingTitle,
   TimeLeft,
-} from './Reading.styled.jsx';
-import ReadingPanel from '../ReadingPanel/ReadingPanel.jsx';
+} from './Reading.styled.js';
 
-const Reading=()=> {
+const Reading = () => {
   const { bookId } = useParams();
   const books = useSelector(selectOwnBooks);
   const [read, setRead] = useState(false);
@@ -71,6 +71,6 @@ const Reading=()=> {
       </BaseMainWrapper>
     </Block>
   );
-}
+};
 
 export default Reading;

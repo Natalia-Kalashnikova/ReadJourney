@@ -56,9 +56,7 @@ export const fetchCurrentUser = createAsyncThunk(
     const authToken = state.auth.token;
 
     if (authToken === null) {
-      return rejectWithValue(
-        'Failed to retrieve user data'
-      );
+      return rejectWithValue('Failed to retrieve user data');
     }
 
     try {

@@ -13,7 +13,7 @@ import {
   TextTwo,
 } from './StartWorkout.styled.js';
 
-const StartWorkout=()=> {
+const StartWorkout = () => {
   return (
     <Container>
       <StartWorkoutTitle>Start your workout</StartWorkoutTitle>
@@ -45,6 +45,6 @@ const StartWorkout=()=> {
       </LinkTo>
     </Container>
   );
-}
+};
 
 export default StartWorkout;

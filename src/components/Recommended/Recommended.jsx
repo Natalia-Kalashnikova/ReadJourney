@@ -1,9 +1,3 @@
-import Container  from '../Container/Container.jsx';
-import BookDetails from '../BookDetails/BookDetails.jsx';
-import BookCard from '../BookCard/BookCard.jsx';
-import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
-import BaseMainWrapper from '../BaseMainWrapper/BaseMainWrapper.jsx';
-import NoBooksScreen from '../NoBooksScreen/NoBooksScreen.jsx';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRecommendedBooks } from '../../redux/books/booksOperations.js';
@@ -11,10 +5,16 @@ import {
   selectBookData,
   selectTotalPage,
 } from '../../redux/books/booksSelectors.js';
-import { ListContainer, SectionContainer } from './Recommended.styled';
-import { LibraryHeading } from '../Books/Books.styled.js';
+import Container from '../Container/Container.jsx';
+import BookDetails from '../BookDetails/BookDetails.jsx';
+import BookCard from '../BookCard/BookCard.jsx';
+import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
+import BaseMainWrapper from '../BaseMainWrapper/BaseMainWrapper.jsx';
+import NoBooksScreen from '../NoBooksScreen/NoBooksScreen.jsx';
 import RecommendedDashboard from '../RecommendedDashboard/RecommendedDashboard.jsx';
 import Pagination from '../Pagination/Pagination.jsx';
+import { ListContainer, SectionContainer } from './Recommended.styled';
+import { LibraryHeading } from '../Books/Books.styled.js';
 
 const calculateLimit = width => {
   if (width < 768) {
@@ -26,7 +26,7 @@ const calculateLimit = width => {
   }
 };
 
-const Recommended=()=> {
+const Recommended = () => {
   const dispatch = useDispatch();
   const results = useSelector(selectBookData);
   const totalPages = useSelector(selectTotalPage);
@@ -65,7 +65,7 @@ const Recommended=()=> {
   }
 
   return (
-    <Container >
+    <Container>
       <RecommendedDashboard />
 
       <BaseMainWrapper>
@@ -102,6 +102,6 @@ const Recommended=()=> {
       </PortalModal>
     </Container>
   );
-}
+};
 
 export default Recommended;

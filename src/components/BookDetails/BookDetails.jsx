@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { addBookById, fetchOwnBooks } from '../../redux/books/booksOperations.js';
+import {
+  addBookById,
+  fetchOwnBooks,
+} from '../../redux/books/booksOperations.js';
 import { selectOwnBooks } from '../../redux/books/booksSelectors.js';
-import sprite from '../../images/sprite.svg';
-import notFoundImg from '../../images/desctop-default-image.jpg';
 import Button from '../Button/Button.jsx';
 import FallbackImage from '../FallbackImage/FallbackImage.jsx';
 import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
 import AddedSuccessfullyModal from '../Modal/AddedSuccessfullyModal/AddedSuccessfullyModal.jsx';
+import sprite from '../../images/sprite.svg';
+import notFoundImg from '../../images/desctop-default-image.jpg';
 import {
   AuthorInfo,
   CloseButton,
@@ -19,7 +22,7 @@ import {
   Title,
 } from './BookDetails.styled';
 
-const BookDetails=({ closeModals, bookData, actionButtonLabel })=> {
+const BookDetails = ({ closeModals, bookData, actionButtonLabel }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const ownLibrary = useSelector(selectOwnBooks);
@@ -43,7 +46,8 @@ const BookDetails=({ closeModals, bookData, actionButtonLabel })=> {
       }
     }
 
-    if (actionButtonLabel === 'Start reading') navigate(`/reading/${bookData._id}`);
+    if (actionButtonLabel === 'Start reading')
+      navigate(`/reading/${bookData._id}`);
 
     closeModals();
   };
@@ -54,33 +58,38 @@ const BookDetails=({ closeModals, bookData, actionButtonLabel })=> {
 
   return (
     <>
-    <StyledModal>
-      <CloseButton onClick={closeModals}>
-        <svg width={22} height={22}>
-          <use href={`${sprite}#icon-x`} />
-        </svg>
-      </CloseButton>
+      <StyledModal>
+        <CloseButton onClick={closeModals}>
+          <svg width={22} height={22}>
+            <use href={`${sprite}#icon-x`} />
+          </svg>
+        </CloseButton>
 
-      {bookData.imageUrl ? (
-        <CoverImage src={bookData.imageUrl} alt="cover" />
-      ) : (
-        <FallbackImage>
-          <CoverImage src={notFoundImg} alt="cover fallback" />
-        </FallbackImage>
-      )}
+        {bookData.imageUrl ? (
+          <CoverImage src={bookData.imageUrl} alt="cover" />
+        ) : (
+          <FallbackImage>
+            <CoverImage src={notFoundImg} alt="cover fallback" />
+          </FallbackImage>
+        )}
 
-      <Title>{bookData.title}</Title>
-      <AuthorInfo>{bookData.author}</AuthorInfo>
-      <PageCount>{bookData.totalPages} pages</PageCount>
+        <Title>{bookData.title}</Title>
+        <AuthorInfo>{bookData.author}</AuthorInfo>
+        <PageCount>{bookData.totalPages} pages</PageCount>
+        <Button
+          label={actionButtonLabel}
+          onClick={handleActionButtonClick}
+          prop="true"
+        />
+      </StyledModal>
 
-      <Button label={actionButtonLabel} onClick={handleActionButtonClick} prop="true" />
-    </StyledModal>
-
-    <PortalModal active={successModalOpen} setActive={setSuccessModalOpen}>
-        <AddedSuccessfullyModal closeModals={() => setSuccessModalOpen(false)} />
+      <PortalModal active={successModalOpen} setActive={setSuccessModalOpen}>
+        <AddedSuccessfullyModal
+          closeModals={() => setSuccessModalOpen(false)}
+        />
       </PortalModal>
     </>
   );
-}
+};
 
 export default BookDetails;

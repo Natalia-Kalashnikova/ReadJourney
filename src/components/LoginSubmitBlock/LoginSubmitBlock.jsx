@@ -1,9 +1,6 @@
-import {
-  ActionButton,
-  ActionLink,
-} from './AuthorizationSubmitBlock.styled';
+import { ActionButton, ActionLink } from './AuthorizationSubmitBlock.styled';
 
-const LoginSubmitBlock=()=> {
+const LoginSubmitBlock = () => {
   return (
     <div>
       <ActionButton type="submit" $log="login">
@@ -12,6 +9,6 @@ const LoginSubmitBlock=()=> {
       <ActionLink to="/register">Don't have an account?</ActionLink>
     </div>
   );
-}
+};
 
 export default LoginSubmitBlock;

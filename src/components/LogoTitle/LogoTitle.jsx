@@ -6,7 +6,7 @@ import {
   Wrapper,
 } from './LogoTitle.styled';
 
-const LogoTitle=()=> {
+const LogoTitle = () => {
   return (
     <Wrapper>
       <CustomLogo>
@@ -17,6 +17,6 @@ const LogoTitle=()=> {
       </TitleHeading>
     </Wrapper>
   );
-}
+};
 
 export default LogoTitle;

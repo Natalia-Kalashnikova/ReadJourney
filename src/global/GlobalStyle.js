@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   font-weight: 700; 
   src: url(${GilroyBold}) format('woff');
 }
+
 @font-face {
   font-family: 'Gilroy';
   font-style: normal;
@@ -58,20 +59,24 @@ h6,
 p {
   margin: 0;
 }
+
 a {
   text-decoration: none;
   color: currentColor;
 }
+
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
+
 button {
   color: ${color.whitePrimary_color};
   cursor: pointer;
@@ -80,6 +85,7 @@ button {
   outline: 0;
   font-family: inherit;
 }
+
 html {
   scroll-behavior: smooth;
 }

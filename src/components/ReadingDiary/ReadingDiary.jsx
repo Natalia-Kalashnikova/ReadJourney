@@ -21,7 +21,7 @@ import {
   PagesPerHour,
 } from './ReadingDiary.styled.js';
 
-const ReadingDiary=({ dailyReadings })=> {
+const ReadingDiary = ({ dailyReadings }) => {
   const dispatch = useDispatch();
   const InfoAboutBook = useSelector(selectInfoCurrentBook);
 
@@ -38,7 +38,6 @@ const ReadingDiary=({ dailyReadings })=> {
       <DiaryList>
         {Object.entries(dailyReadings)
           .sort(([dateA], [dateB]) => {
-      
             const [dayA, monthA, yearA] = dateA.split('.');
             const [dayB, monthB, yearB] = dateB.split('.');
             const dateObjA = new Date(`${yearA}-${monthA}-${dayA}`);
@@ -47,7 +46,6 @@ const ReadingDiary=({ dailyReadings })=> {
           })
           .map(([date, dailyReadingArray], index) => {
             if (date !== 'Invalid Date') {
-
               const totalReadForDay = dailyReadingArray.reduce(
                 (total, dailyReading) => total + dailyReading.totalRead,
                 0
@@ -77,8 +75,7 @@ const ReadingDiary=({ dailyReadings })=> {
                               <use href={`${sprite}#icon-block`} />
                             </ActionSvg>
                             <ActionButton
-                              onClick={() => handleDellTrash(dailyReading.id)}
-                            >
+                              onClick={() => handleDellTrash(dailyReading.id)}>
                               <svg width={14} height={14}>
                                 <use href={`${sprite}#icon-trash`} />
                               </svg>
@@ -100,6 +97,6 @@ const ReadingDiary=({ dailyReadings })=> {
       </DiaryList>
     </DiaryContainer>
   );
-}
+};
 
 export default ReadingDiary;
