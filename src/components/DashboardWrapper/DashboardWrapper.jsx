@@ -1,7 +1,7 @@
-import css from '../DashboardWrapper/DashboardWrapper.module.css';
+import { DBWrap } from './DashboardWrapper.styled';
 
 const DashboardWrapper = ({ children }) => {
-    return <div className={css.dbWrap}>{children}</div>;
+  return <DBWrap>{children}</DBWrap>;
 };
 
 export default DashboardWrapper;

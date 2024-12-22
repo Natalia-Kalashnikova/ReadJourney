@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import sprite from '../../images/sprite.svg';
 import { useState } from 'react';
@@ -6,12 +6,21 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../redux/auth/authOperations.js';
 import { toast } from 'react-toastify';
-import css from './LoginForm.module.css';
-import LoginSubmitBlock from '../LoginSubmitBlock/LoginSubmitBlock.jsx';
-import AuthImage from '../AuthImage/AuthImage.jsx';
+import {
+  Container,
+  ErrorFeedback,
+  FeedbackMessage,
+  FieldContainer,
+  FormBlock,
+  FormGroup,
+  Icon,
+  Label,
+  StyledField,
+  FormContainer,
+} from './Auth.styled';
 import LogoTitle from '../LogoTitle/LogoTitle.jsx';
-import classNames from 'classnames';
-
+import LoginSubmitBlock from '../LoginSubmitBlock/LoginSubmitBlock.jsx';
+import AuthorizationImage from '../AuthImage/AuthImage.jsx';
 
 const initialValues = {
   email: '',
@@ -27,7 +36,7 @@ const schema = Yup.object({
     .min(7, 'Password must be at least 7 characters'),
 });
 
-const LoginForm = () => {
+const LoginForm=()=> {
   const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
@@ -51,29 +60,28 @@ const LoginForm = () => {
   };
 
   return (
-    <div className={css.container}>
-      <div className={css.formBlock}>
+    <Container>
+      <FormBlock>
         <LogoTitle />
 
         <Formik
           initialValues={initialValues}
           validationSchema={schema}
-          onSubmit={handleSubmit}>
+          onSubmit={handleSubmit}
+        >
           {({ errors, touched }) => (
             <Form>
-              <div className={css.formContainer}>
-                <div className={css.formGroup}>
-                  <div className={css.fieldContainer}>
-                    <label className={css.label} htmlFor="email">
-                      Mail:
-                    </label>
-                    <Field
-                      className={classNames(css.field, css.nameField)}
+              <FormContainer>
+                <FormGroup>
+                  <FieldContainer>
+                    <Label htmlFor="email">Mail:</Label>
+                    <StyledField
                       id="email"
                       name="email"
                       type="email"
                       placeholder="nik@google.com"
                       error={errors.email && touched.email ? 'true' : 'false'}
+                      paddingleft="53px"
                       style={{
                         borderColor:
                           touched.email && errors.email
@@ -85,30 +93,23 @@ const LoginForm = () => {
                     />
                     {touched.email &&
                       (errors.email ? (
-                        <svg className={css.icon} width={20} height={20}>
+                        <Icon width={20} height={20}>
                           <use href={`${sprite}#icon-pajamas_error`} />
-                        </svg>
+                        </Icon>
                       ) : (
-                        <svg className={css.icon} width={20} height={20}>
+                        <Icon width={20} height={20}>
                           <use href={`${sprite}#icon-check-ok`} />
-                        </svg>
+                        </Icon>
                       ))}
                     {touched.email && !errors.email && (
-                      <p className={css.feedbackMessage}>Email is secure</p>
+                      <FeedbackMessage>Email is secure</FeedbackMessage>
                     )}
-                    <ErrorMessage
-                      className={css.errorFeedback}
-                      name="email"
-                      component="div"
-                    />
-                  </div>
+                    <ErrorFeedback name="email" component="div" />
+                  </FieldContainer>
 
-                  <div className={css.fieldContainer}>
-                    <label className={css.label} htmlFor="password">
-                      Password:
-                    </label>
-                    <Field
-                      className={classNames(css.field, css.passwordField)}
+                  <FieldContainer>
+                    <Label htmlFor="password">Password:</Label>
+                    <StyledField
                       id="password"
                       name="password"
                       type={showPassword ? 'text' : 'password'}
@@ -116,6 +117,7 @@ const LoginForm = () => {
                       error={
                         errors.password && touched.password ? 'true' : 'false'
                       }
+                      paddingleft="86px"
                       style={{
                         borderColor:
                           touched.password && errors.password
@@ -127,58 +129,54 @@ const LoginForm = () => {
                     />
 
                     {errors.password && touched.password ? (
-                      <svg className={css.icon} width={20} height={20}>
+                      <Icon width={20} height={20}>
                         <use href={`${sprite}#icon-pajamas_error`} />
-                      </svg>
+                      </Icon>
                     ) : !errors.password && touched.password ? (
-                      <svg className={css.icon} width={20} height={20}>
+                      <Icon width={20} height={20}>
                         <use href={`${sprite}#icon-check-ok`} />
-                      </svg>
+                      </Icon>
                     ) : showPassword ? (
-                      <svg
-                        className={css.icon}
+                      <Icon
                         width={20}
                         height={20}
                         onMouseDown={e => {
                           e.preventDefault();
                           togglePasswordVisibility();
-                        }}>
+                        }}
+                      >
                         <use href={`${sprite}#icon-eye`} />
-                      </svg>
+                      </Icon>
                     ) : (
-                      <svg
-                        className={css.icon}
+                      <Icon
                         width={20}
                         height={20}
                         onMouseDown={e => {
                           e.preventDefault();
                           togglePasswordVisibility();
-                        }}>
+                        }}
+                      >
                         <use href={`${sprite}#icon-eye-off`} />
-                      </svg>
+                      </Icon>
                     )}
 
                     {touched.password && !errors.password && (
-                      <p className={css.feedbackMessage}>Password is secure</p>
+                      <FeedbackMessage>Password is secure</FeedbackMessage>
                     )}
-                    <ErrorMessage
-                      className={css.errorFeedback}
-                      name="password"
-                      component="div"
-                    />
-                  </div>
-                </div>
-                <div style={{ marginTop: 'auto' }}>
-                  <LoginSubmitBlock />
-                </div>
-              </div>
+                    <ErrorFeedback name="password" component="div" />
+                  </FieldContainer>
+                </FormGroup>
+                <LoginSubmitBlock />
+              </FormContainer>
             </Form>
           )}
         </Formik>
-      </div>
-      <AuthImage />
-    </div>
+      </FormBlock>
+
+      <AuthorizationImage />
+    </Container>
   );
-};
+}
 
 export default LoginForm;
+

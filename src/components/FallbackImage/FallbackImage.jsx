@@ -3,7 +3,7 @@ import notFoundImgMobile from '../../images/mobil-default-image.jpg';
 import notFoundImg2x from '../../images/desctop-default-image@2x.jpg';
 import notFoundImg from '../../images/desctop-default-image.jpg';
 
-const FallbackImage =({ children })=> {
+const FallbackImage=({ children })=> {
   return (
     <picture>
       <source

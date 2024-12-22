@@ -14,6 +14,7 @@ const initialState = {
   loading: false,
   error: null,
 };
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -34,7 +35,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-        
+
       .addCase(loginUser.pending, state => {
         state.loading = true;
         state.error = null;
@@ -49,7 +50,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-        
+
       .addCase(logOutUser.pending, state => {
         state.loading = true;
         state.error = null;
@@ -64,7 +65,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-        
+
       .addCase(fetchCurrentUser.pending, state => {
         state.isRefreshing = true;
       })

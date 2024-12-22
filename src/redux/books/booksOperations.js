@@ -1,9 +1,9 @@
-import axios from "axios";
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { toast } from "react-toastify";
+import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 export const fetchRecommendedBooks = createAsyncThunk(
-  '/books/recommend',
+  'books/fetchRecommendedBooks',
   async ({ page = 1, limit = 10, title = '', author = '' }, thunkAPI) => {
     try {
       const response = await axios.get(
@@ -17,7 +17,7 @@ export const fetchRecommendedBooks = createAsyncThunk(
 );
 
 export const addNewBook = createAsyncThunk(
-  '/books/addNew',
+  'books/addNew',
   async (data, thunkAPI) => {
     try {
       const response = await axios.post(`/books/add`, data);
@@ -28,8 +28,8 @@ export const addNewBook = createAsyncThunk(
   }
 );
 
-export const addBookToCollectionById = createAsyncThunk(
-  '/books/add',
+export const addBookById = createAsyncThunk(
+  'books/add',
   async (id, thunkAPI) => {
     try {
       const response = await axios.post(`/books/add/${id}`);
@@ -40,8 +40,8 @@ export const addBookToCollectionById = createAsyncThunk(
   }
 );
 
-export const removeBookFromCollection = createAsyncThunk(
-  '/books/remove',
+export const deleteBook = createAsyncThunk(
+  'books/remove',
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`/books/remove/${id}`);
@@ -53,7 +53,7 @@ export const removeBookFromCollection = createAsyncThunk(
 );
 
 export const fetchOwnBooks = createAsyncThunk(
-  '/books/own',
+  'books/own',
   async (status = '', thunkAPI) => {
     try {
       const url = status ? `/books/own?status=${status}` : '/books/own';
@@ -65,8 +65,8 @@ export const fetchOwnBooks = createAsyncThunk(
   }
 );
 
-export const startReadingBook = createAsyncThunk(
-  '/books/reading/start',
+export const readingStart = createAsyncThunk(
+  'books/reading/start',
   async (data, thunkAPI) => {
     try {
       const response = await axios.post(`/books/reading/start`, data);
@@ -78,8 +78,8 @@ export const startReadingBook = createAsyncThunk(
   }
 );
 
-export const finishReadingBook = createAsyncThunk(
-  '/books/reading/finish',
+export const readingStop = createAsyncThunk(
+  'books/reading/finish',
   async (data, thunkAPI) => {
     try {
       const response = await axios.post(`/books/reading/finish`, data);
@@ -92,7 +92,7 @@ export const finishReadingBook = createAsyncThunk(
 );
 
 export const deleteReadingRecord = createAsyncThunk(
-  '/books/reading',
+  'books/reading',
   async (data, thunkAPI) => {
     try {
       const response = await axios.delete(
@@ -109,7 +109,7 @@ export const deleteReadingRecord = createAsyncThunk(
 );
 
 export const fetchBookDetails = createAsyncThunk(
-  '/books/id',
+  'books/id',
   async (id, thunkAPI) => {
     try {
       const response = await axios.get(`/books/${id}`);

@@ -1,68 +1,86 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { addBookToCollectionById, fetchOwnBooks } from '../../redux/books/booksOperations.js';
+import { addBookById, fetchOwnBooks } from '../../redux/books/booksOperations.js';
 import { selectOwnBooks } from '../../redux/books/booksSelectors.js';
 import sprite from '../../images/sprite.svg';
 import notFoundImg from '../../images/desctop-default-image.jpg';
 import Button from '../Button/Button.jsx';
 import FallbackImage from '../FallbackImage/FallbackImage.jsx';
-import css from './BookDetails.module.css';
+import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
+import AddedSuccessfullyModal from '../Modal/AddedSuccessfullyModal/AddedSuccessfullyModal.jsx';
+import {
+  AuthorInfo,
+  CloseButton,
+  CoverImage,
+  PageCount,
+  StyledModal,
+  Title,
+} from './BookDetails.styled';
 
-const BookDetails = ({ closeModal, bookData, actionButtonLabel }) => {
+const BookDetails=({ closeModals, bookData, actionButtonLabel })=> {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const ownLibrary = useSelector(selectOwnBooks);
+
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchOwnBooks());
   }, [dispatch]);
 
   const handleActionButtonClick = () => {
-    if (actionButtonLabel === 'Add to Library') {
+    if (actionButtonLabel === 'Add to library') {
       const bookExists = ownLibrary.find(item => item.title === bookData.title);
+
       if (!bookExists) {
         toast.success('The addition of the book was successful');
-        dispatch(addBookToCollectionById(bookData._id));
+        dispatch(addBookById(bookData._id));
+        setSuccessModalOpen(true);
       } else {
         toast.error('The book has already been added to the library');
       }
     }
-    if (actionButtonLabel === 'Start Reading') {
-      navigate(`/reading/${bookData._id}`);
-    }
-    closeModal();
+
+    if (actionButtonLabel === 'Start reading') navigate(`/reading/${bookData._id}`);
+
+    closeModals();
   };
 
+  if (!bookData) {
+    return null;
+  }
+
   return (
-    <div className={css.styledModal}>
-      <button onClick={closeModal} className={css.closeButton}>
+    <>
+    <StyledModal>
+      <CloseButton onClick={closeModals}>
         <svg width={22} height={22}>
           <use href={`${sprite}#icon-x`} />
         </svg>
-      </button>
+      </CloseButton>
+
       {bookData.imageUrl ? (
-        <img className={css.coverImage} src={bookData.imageUrl} alt="cover" />
+        <CoverImage src={bookData.imageUrl} alt="cover" />
       ) : (
         <FallbackImage>
-          <img
-            className={css.coverImage}
-            src={notFoundImg}
-            alt="cover fallback"
-          />
+          <CoverImage src={notFoundImg} alt="cover fallback" />
         </FallbackImage>
       )}
-      <h2 className={css.Title}>{bookData.title}</h2>
-      <p className={css.AuthorInfo}>{bookData.author}</p>
-      <p className={css.PageCount}>{bookData.totalPages} pages</p>
-      <Button
-        label={actionButtonLabel}
-        onClick={handleActionButtonClick}
-        prop="true"
-      />
-    </div>
+
+      <Title>{bookData.title}</Title>
+      <AuthorInfo>{bookData.author}</AuthorInfo>
+      <PageCount>{bookData.totalPages} pages</PageCount>
+
+      <Button label={actionButtonLabel} onClick={handleActionButtonClick} prop="true" />
+    </StyledModal>
+
+    <PortalModal active={successModalOpen} setActive={setSuccessModalOpen}>
+        <AddedSuccessfullyModal closeModals={() => setSuccessModalOpen(false)} />
+      </PortalModal>
+    </>
   );
-};
+}
 
 export default BookDetails;

@@ -1,15 +1,22 @@
 import Button from '../Button/Button.jsx';
 import DashboardWrapper from '../DashboardWrapper/DashboardWrapper.jsx';
-import { Formik, Form, Field} from 'formik';
+import { Form, Formik } from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { fetchRecommendedBooks } from '../../redux/books/booksOperations';
+import { fetchRecommendedBooks } from '../../redux/books/booksOperations.js';
 import * as Yup from 'yup';
-import css from './RecommendedDashboard.module.css';
+import {
+  FieldContainer,
+  FormContainer,
+  InputField,
+  Label,
+  StyledButtonContainer,
+  StyledFiltersTitle,
+  StyledFormContainer,
+} from './RecommendedDashboard.styled.js';
 import StartWorkout from '../StartWorkout/StartWorkout.jsx';
 import Remark from '../Remark/Remark.jsx';
-import classNames from 'classnames';
 
 const initialValues = {
   title: '',
@@ -25,17 +32,19 @@ const RecommendedDashboard=()=> {
   const [isRestButtonVisible, setIsRestButtonVisible] = useState(false);
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    const { title, author } = e;
-    if (title === undefined) return;
-    if (title) {
-      setIsRestButtonVisible(true);
-      dispatch(fetchRecommendedBooks({ title, author }));
-    } else {
-      toast.warn('Kindly complete the form');
-    }
-    document.getElementById('page').blur();
-  };
+  const handleSubmit = (values, {setSubmitting }) => {
+  const { title, author } = values;
+
+  if (!title && !author) {
+    toast.warn('Kindly complete the form');
+    setSubmitting(false);
+    return;
+  }
+
+  setIsRestButtonVisible(true);
+  dispatch(fetchRecommendedBooks({ title, author }));
+  document.getElementById('page').blur();
+};
 
   const handleReset = resetForm => {
     setIsRestButtonVisible(false);
@@ -45,8 +54,8 @@ const RecommendedDashboard=()=> {
 
   return (
     <DashboardWrapper>
-      <div className={css.styledFormContainer}>
-        <h3 className={css.styledFiltersTitle}>Filters:</h3>
+      <StyledFormContainer>
+        <StyledFiltersTitle>Filters:</StyledFiltersTitle>
         <Formik
           initialValues={initialValues}
           validationSchema={schema}
@@ -54,36 +63,37 @@ const RecommendedDashboard=()=> {
         >
           {({ resetForm }) => (
             <Form>
-              <div className={css.formContainer}>
-                <div className={css.fieldContainer}>
-                  <label className={css.label} htmlFor="title">Book title:</label>
-                  <Field className={css.field}
+              <FormContainer>
+                <FieldContainer>
+                  <Label htmlFor="title">Book title:</Label>
+                  <InputField
                     id="title"
                     name="title"
                     type="title"
                     placeholder="Enter text"
                   />
-                </div>
-                <div className={css.fieldContainer}>
-                  <label className={css.label} htmlFor="author">The author:</label>
-                  <Field className={classNames(css.field, css.authorField)}
+                </FieldContainer>
+                <FieldContainer>
+                  <Label htmlFor="author">The author:</Label>
+                  <InputField
                     id="author"
                     name="author"
                     type="author"
-                    placeholder="Enter text"                    
+                    placeholder="Enter text"
+                    paddindleft="95px"
                   />
-                </div>
-              </div>
-              <div className={css.buttonContainer}>
-                <Button label="To apply" onClick={handleSubmit} />
+                </FieldContainer>
+              </FormContainer>
+              <StyledButtonContainer>
+                <Button label="To apply" type="submit" />
                 {isRestButtonVisible && (
                   <Button label="Rest" onClick={() => handleReset(resetForm)} />
                 )}
-              </div>
+              </StyledButtonContainer>
             </Form>
           )}
         </Formik>
-      </div>
+      </StyledFormContainer>
 
       <StartWorkout />
       <Remark />

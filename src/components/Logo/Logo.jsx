@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import sprite from '../../images/sprite.svg';
-import css from './Logo.module.css';
+import { LogoContainer, LogoText } from './Logo.styled';
 
 const Logo=()=> {
   const location = useLocation();
@@ -8,14 +8,12 @@ const Logo=()=> {
     location.pathname === '/register' || location.pathname === '/login';
 
   return (
-    <div className={css.logoContainer}>
+    <LogoContainer to="/recommended">
       <svg width={42} height={17}>
         <use href={`${sprite}#icon-Logo`} />
       </svg>
-      <p className={`${css.logoText} ${page ? css.page : ''}`}>
-        READ JOURNEY
-      </p>
-    </div>
+      <LogoText $page={page ? 'true' : ''}>READ JOURNEY</LogoText>
+    </LogoContainer>
   );
 }
 

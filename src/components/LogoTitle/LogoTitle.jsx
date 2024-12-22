@@ -1,16 +1,21 @@
 import Logo from '../Logo/Logo.jsx';
-import css from './LogoTitle.module.css';
+import {
+  CustomLogo,
+  HighlightedText,
+  TitleHeading,
+  Wrapper,
+} from './LogoTitle.styled';
 
 const LogoTitle=()=> {
   return (
-      <div className={css.wrapper}>
-          <div className={css.customLogo}>
+    <Wrapper>
+      <CustomLogo>
         <Logo />
-      </div>
-          <h2 className={css.titleHeading}>
-              Expand your mind, reading <span className={css.highlightedText}>a book</span>
-      </h2>
-    </div>
+      </CustomLogo>
+      <TitleHeading>
+        Expand your mind, reading <HighlightedText>a book</HighlightedText>
+      </TitleHeading>
+    </Wrapper>
   );
 }
 

@@ -1,12 +1,18 @@
 import { useEffect, useRef } from 'react';
 import sprite from '../../images/sprite.svg';
-import css from './DropdownMenu.module.css';
+import {
+  ChevronIcon,
+  DropdownContainer,
+  OptionItem,
+  OptionList,
+  ToggleButton,
+} from './DropdownMenu.styled';
 
 const options = ['Unread', 'In progress', 'Done', 'All books'];
 
 const DropdownMenu=({
   selectedBooks,
-  handleSelectedBooks,
+  handleSelectedCategory,
   isOpen,
   setIsOpen,
 })=> {
@@ -18,32 +24,38 @@ const DropdownMenu=({
         setIsOpen(false);
       }
     };
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [setIsOpen]);
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
+  const toggleDropdown = event => {
+    event.stopPropagation();
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = book => {
+    handleSelectedCategory(book);
+    setIsOpen(false);
+  };
 
   return (
-    <div className={css.dropdownContainer} onClick={toggleDropdown} ref={selectRef}>
-      <svg className={css.chevronIcon} width={16} height={16}>
-        <use href={`${sprite}#icon-chevron-${isOpen ? 'upp' : 'down'}`} />
-      </svg>
-      <button className={css.toggleButton}>{selectedBooks || 'All books'}</button>
-      <ul className={`${css.optionList} ${isOpen ? css.open : ''}`}>
+    <DropdownContainer ref={selectRef}>
+      <ToggleButton onClick={toggleDropdown}>
+        {selectedBooks || 'All books'}
+        <ChevronIcon width={16} height={16}>
+          <use href={`${sprite}#icon-chevron-${isOpen ? 'upp' : 'down'}`} />
+        </ChevronIcon>
+      </ToggleButton>
+      <OptionList open={isOpen}>
         {options.map(book => (
-          <li
-            key={book}
-            className={css.optionItem}
-            onClick={() => handleSelectedBooks(book)}
-          >
+          <OptionItem key={book} onClick={() => handleOptionClick(book)}>
             {book}
-          </li>
+          </OptionItem>
         ))}
-      </ul>
-    </div>
+      </OptionList>
+    </DropdownContainer>
   );
 }
 

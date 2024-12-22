@@ -1,58 +1,52 @@
 import { useDispatch } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { logOutUser } from '../../redux/auth/authOperations.js';
 import sprite from '../../images/sprite.svg';
+import { NavigationLink } from '../Header/Header.styled.js';
 import Button from '../Button/Button.jsx';
-import css from './Sidebar.module.css';
+import {
+  CloseButton,
+  LinksContainer,
+  MenuContainer,
+} from './Sidebar.styled.js';
 
-const Sidebar=({ isOpen, onClose }) =>{
+const Sidebar=({ isOpen, onClose })=> {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleButtonClick = async () => {
+  const handleActionButtonClick = async () => {
     try {
       await dispatch(logOutUser()).unwrap();
       navigate('/register');
     } catch (error) {
-        console.error('Logout error:', error); 
+      console.error('Logout error:', error); 
       toast.error('Logout unsuccessful. An error occurred');
     }
   };
 
   return (
-    <div className={`${css.menuContainer} ${isOpen ? css.menuContainerOpen : ''}`}>
-      <button className={css.closeButton} onClick={onClose}>
+    <MenuContainer open={isOpen}>
+      <CloseButton onClick={onClose}>
         <svg width={28} height={28}>
           <use href={`${sprite}#icon-x`} />
         </svg>
-      </button>
-      <div className={css.linksContainer}>
-          <NavLink
-            to="/recommended"
-            className={({ isActive }) =>
-              isActive ? `${css.navigationLink} ${css.active}` : css.navigationLink
-            }
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/library"
-            className={({ isActive }) =>
-              isActive ? `${css.navigationLink} ${css.active}` : css.navigationLink
-            }
-          >
-            My library
-          </NavLink>
-      </div>
+      </CloseButton>
+
+      <LinksContainer>
+        <NavigationLink to="/recommended">Home</NavigationLink>
+        <NavigationLink to="/library">My library</NavigationLink>
+      </LinksContainer>
+
       <div>
-        <Button label="Log out" onClick={handleButtonClick} />
+        <Button label="Log out" onClick={handleActionButtonClick} />
       </div>
-    </div>
+    </MenuContainer>
   );
 }
 
 export default Sidebar;
+
 
 
 

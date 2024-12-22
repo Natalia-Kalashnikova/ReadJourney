@@ -6,7 +6,7 @@ import { selectToken } from '../../redux/auth/authSelectors.js';
 import { ToastContainer } from 'react-toastify';
 import { useAuth } from '../../hooks/useAuth.js';
 import Loader from '../Loader/Loader.jsx';
-import Layout from '../Layout/Layout.jsx'
+import Layout from '../Layout/Layout.jsx';
 import { AuthRoute } from '../../hoc/AuthRoute.jsx';
 import { PrivateRoute } from '../../hoc/PrivateRoute.jsx';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,7 +28,7 @@ function App () {
     }
   }, [dispatch, token]);
 
-   return (
+  return (
     <Suspense fallback={<Loader />}>
       {isRefreshing ? (
         <Loader />
@@ -36,7 +36,7 @@ function App () {
         <div>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Navigate replace to="/register" />} />
+              <Route index element={<Navigate replace to="/login" />} />
               <Route
                 path="/register"
                 element={
@@ -73,7 +73,8 @@ function App () {
                   <PrivateRoute redirectTo="/login" component={<Reading />} />
                 }
               />
-            </Route>
+              </Route>
+              <Route path="*" element={<Navigate to="/login" />} />              
           </Routes>
           <ToastContainer autoClose={1500} />
         </div>

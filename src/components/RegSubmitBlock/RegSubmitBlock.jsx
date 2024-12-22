@@ -1,18 +1,13 @@
-import { NavLink } from 'react-router-dom';
-import css from './RegSubmitBlock.module.css';
+import {
+  ActionButton,
+  ActionLink,
+} from '../LoginSubmitBlock/AuthorizationSubmitBlock.styled.js';
 
 const RegSubmitBlock=() =>{
   return (
     <div>
-      <button
-        type="submit"
-        className={css.actionButton}
-      >
-        Registration
-      </button>
-      <NavLink to="/login" className={css.actionLink}>
-        Already have an account?
-      </NavLink>
+      <ActionButton type="submit">Registration</ActionButton>
+      <ActionLink to="/login">Already have an account?</ActionLink>
     </div>
   );
 }

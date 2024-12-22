@@ -1,19 +1,19 @@
-import imgBooksDesc from '../../images/like-desctop.png';
-import imgBooksDesc2x from '../../images/like-desctop@2x.png';
-import css from './Remark.module.css';
+import imgBooksDesc from '../../images/book-desctop.png';
+import imgBooksDesc2x from '../../images/book-desctop@2.png';
+import { RemarkContainer, RemarkSpan, RemarkText } from './Remark.styled.jsx';
 
 const Remark=()=> {
   return (
-      <div className={css.remarkContainer}>
+    <RemarkContainer>
       <picture>
         <source srcSet={imgBooksDesc2x} media="(min-resolution: 192dpi)" />
         <img src={imgBooksDesc} alt="stack books" width={40} />
       </picture>
-          <p className={css.remarkText}>
-        "Books are <span className={css.remarkSpan}>windows</span> to the world, and reading is
+      <RemarkText>
+        "Books are <RemarkSpan>windows</RemarkSpan> to the world, and reading is
         a journey into the unknown."
-      </p>
-    </div>
+      </RemarkText>
+    </RemarkContainer>
   );
 }
 

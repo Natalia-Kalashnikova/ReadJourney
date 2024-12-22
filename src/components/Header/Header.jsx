@@ -1,14 +1,24 @@
-import  { useState } from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { logOutUser } from '../../redux/auth/authOperations.js';
 import { selectUser } from '../../redux/auth/authSelectors.js';
-import PortalModal from '../Modal/PortalModal/PortalModal.jsx';
-import Sidebar from '../Sidebar/Sidebar.jsx';
-import Logo from '../Logo/Logo.jsx';
-import { toast } from 'react-toastify';
-import css from './Header.module.css';
 import sprite from '../../images/sprite.svg';
+import { toast } from 'react-toastify';
+import {
+  AvatarWrapper,
+  HeaderContainer,
+  HeaderInner,
+  LogoutButton,
+  MenuToggle,
+  NavContainer,
+  NavigationLink,
+  UserInfoContainer,
+  Username,
+} from './Header.styled.js';
+import Logo from '../Logo/Logo.jsx';
+import Sidebar from '../Sidebar/Sidebar.jsx';
 
 const Header=()=> {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,66 +27,54 @@ const Header=()=> {
   const { name } = useSelector(selectUser);
   const firstLetterAvatar = name?.slice(0, 1).toUpperCase();
 
-  const handleButtonClick = async () => {
+  const handleActionButtonClick = async () => {
     try {
       await dispatch(logOutUser()).unwrap();
-      navigate('/register');
+      navigate('/login');
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error('Logout error:', error); 
       toast.error('Logout unsuccessful. An error occurred');
     }
   };
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <div className={css.headerContainer}>
-      <div className={css.headerInner}>
+    <HeaderContainer>
+      <HeaderInner>
         <Link to="/recommended">
           <Logo />
         </Link>
-              
-        <nav className={`${css.navContainer} ${isMenuOpen && css.navContainerVisible}`}
-        >
-          <NavLink
-            to="/recommended"
-            className={({ isActive }) =>
-              isActive ? `${css.navigationLink} ${css.active}` : css.navigationLink
-            }
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/library"
-            className={({ isActive }) =>
-              isActive ? `${css.navigationLink} ${css.active}` : css.navigationLink
-            }
-          >
-            My library
-          </NavLink>
-        </nav>
-        <div className={css.userInfoContainer}>
-          <div className={css.avatarWrapper}>{firstLetterAvatar}</div>
-          <p className={css.username}>{name}</p>
-<button className={css.actionButton} onClick={handleButtonClick}>
-  Log out
-</button>
-          <button className={css.menuToggle} onClick={toggleMenu}>
+
+        <NavContainer>
+          <NavigationLink to="/recommended">Home</NavigationLink>
+          <NavigationLink to="/library">My library</NavigationLink>
+        </NavContainer>
+
+        <UserInfoContainer>
+          <AvatarWrapper>{firstLetterAvatar}</AvatarWrapper>
+          <Username>{name}</Username>
+          <LogoutButton
+            label="Log out"
+            onClick={handleActionButtonClick}
+            width="114px"
+          />
+          <MenuToggle onClick={toggleMenu}>
             <svg width={28} height={28}>
               <use href={`${sprite}#icon-menu`} />
             </svg>
-          </button>
-        </div>
-      </div>
+          </MenuToggle>
+        </UserInfoContainer>
+      </HeaderInner>
+
       <PortalModal active={isMenuOpen} setActive={setIsMenuOpen}>
         <Sidebar
           isOpen={isMenuOpen}
           onClose={() => setIsMenuOpen(false)}
         />
       </PortalModal>
-    </div>
+    </HeaderContainer>
   );
 }
 

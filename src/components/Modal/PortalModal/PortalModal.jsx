@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom';
 import  { useEffect } from 'react';
-import css from './PortalModal.module.css';
+import { ModalContainer } from './PortalModal.styled';
 
-const PortalModal=({ active, setActive, children }) =>{
+const PortalModal=({ active, setActive, children })=> {
   useEffect(() => {
     const closeModal = e => {
       if (e.key === 'Escape') {
@@ -12,9 +12,9 @@ const PortalModal=({ active, setActive, children }) =>{
 
     const handleBodyScroll = disableScroll => {
       if (disableScroll) {
-        document.body.classList.add(css.noScroll);
+        document.body.classList.add('no-scroll');
       } else {
-        document.body.classList.remove(css.noScroll);
+        document.body.classList.remove('no-scroll');
       }
     };
 
@@ -33,14 +33,13 @@ const PortalModal=({ active, setActive, children }) =>{
   }, [active, setActive]);
 
   return ReactDOM.createPortal(
-    <div
-      className={`${css.modalContainer} ${active ? css.active : ''}`}
+    <ModalContainer
+      className={active ? 'active' : ''}
       onClick={() => setActive(false)}
     >
       <div onClick={e => e.stopPropagation()}>{children}</div>
-    </div>,
+    </ModalContainer>,
     document.getElementById('modal')
   );
 }
-
-export default PortalModal;
+export default PortalModal; 

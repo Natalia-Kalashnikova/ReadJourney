@@ -1,38 +1,49 @@
-import { NavLink } from 'react-router-dom';
 import sprite from '../../images/sprite.svg';
-import css from './StartWorkout.module.css';
+import {
+  ArgumentsBlock,
+  ArrowSvg,
+  Container,
+  DescriptionSpan,
+  LibraryText,
+  LinkTo,
+  StartWorkoutTitle,
+  StepContainer,
+  StepDescription,
+  StepNumber,
+  TextTwo,
+} from './StartWorkout.styled.js';
 
 const StartWorkout=()=> {
   return (
-      <div className={css.container}>
-          <p className={css.startWorkoutTitle}>Start your workout</p>
-          <div className={css.argumentsBlock}>
-              <div className={css.stepContainer}>
-                  <div className={css.stepNumber}>1</div>
-                  <p className={css.stepDescription}>
+    <Container>
+      <StartWorkoutTitle>Start your workout</StartWorkoutTitle>
+      <ArgumentsBlock>
+        <StepContainer>
+          <StepNumber>1</StepNumber>
+          <StepDescription>
             Create a personal library:{' '}
-                      <span className={css.descriptionSpan}>
+            <DescriptionSpan>
               add the books you intend to read to it.
-            </span>
-          </p>
-        </div>
-              <div className={css.stepContainer}>
-                  <div className={css.stepNumber}>2</div>
-                  <p className={css.textTwo}>
+            </DescriptionSpan>
+          </StepDescription>
+        </StepContainer>
+        <StepContainer>
+          <StepNumber>2</StepNumber>
+          <TextTwo>
             Create your first workout:{' '}
-                      <span className={css.descriptionSpan}>
+            <DescriptionSpan>
               define a goal, choose a period, start training.
-            </span>
-          </p>
-        </div>
-      </div>
-      <NavLink className={css.linkTo} to="/library">
-              <p className={css.libraryText}>My library </p>
-              <svg className={css.arrowSvg}>
+            </DescriptionSpan>
+          </TextTwo>
+        </StepContainer>
+      </ArgumentsBlock>
+      <LinkTo to="/library">
+        <LibraryText>My library </LibraryText>
+        <ArrowSvg>
           <use href={`${sprite}#icon-arrow-right`} />
-        </svg>
-      </NavLink>
-    </div>
+        </ArrowSvg>
+      </LinkTo>
+    </Container>
   );
 }
 

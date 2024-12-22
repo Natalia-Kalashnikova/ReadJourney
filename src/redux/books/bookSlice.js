@@ -1,15 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import {
-    fetchRecommendedBooks,
-    addNewBook,
-    addBookToCollectionById,
-    removeBookFromCollection,
-    fetchOwnBooks,
-    startReadingBook,
-    finishReadingBook,
-    deleteReadingRecord,
-    fetchBookDetails
-} from "./booksOperations.js";
+  addBookById,
+  addNewBook,
+  fetchBookDetails,
+  deleteBook,
+  fetchRecommendedBooks,
+  fetchOwnBooks,
+  deleteReadingRecord,
+  readingStart,
+  readingStop,
+} from './booksOperations.js';
 
 const bookSlice = createSlice({
   name: 'book',
@@ -38,7 +38,7 @@ const bookSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-        
+
       .addCase(addNewBook.pending, state => {
         state.loading = true;
         state.error = null;
@@ -51,20 +51,20 @@ const bookSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-        
-      .addCase(addBookToCollectionById.pending, state => {
+
+      .addCase(addBookById.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(addBookToCollectionById.fulfilled, (state, action) => {
+      .addCase(addBookById.fulfilled, (state, action) => {
         state.loading = false;
         state.myBooks = [...state.myBooks, action.payload];
       })
-      .addCase(addBookToCollectionById.rejected, (state, action) => {
+      .addCase(addBookById.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-        
+
       .addCase(fetchOwnBooks.pending, state => {
         state.loading = true;
         state.error = null;
@@ -77,47 +77,48 @@ const bookSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-        
-      .addCase(removeBookFromCollection.pending, state => {
+
+      .addCase(deleteBook.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(removeBookFromCollection.fulfilled, (state, action) => {
+      .addCase(deleteBook.fulfilled, (state, action) => {
         state.loading = false;
         state.myBooks = state.myBooks.filter(
           book => book._id !== action.payload.id
         );
       })
-      .addCase(removeBookFromCollection.rejected, (state, action) => {
+      .addCase(deleteBook.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-        
-      .addCase(startReadingBook.pending, state => {
+
+      .addCase(readingStart.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(startReadingBook.fulfilled, (state, action) => {
+      .addCase(readingStart.fulfilled, (state, action) => {
         state.loading = false;
         state.readBook = [...state.readBook, action.payload];
       })
-      .addCase(startReadingBook.rejected, (state, action) => {
+      .addCase(readingStart.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-        
-      .addCase(finishReadingBook.pending, state => {
+
+      .addCase(readingStop.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(finishReadingBook.fulfilled, (state, action) => {
+      .addCase(readingStop.fulfilled, (state, action) => {
         state.loading = false;
         state.readBook = [...state.readBook, action.payload];
       })
-      .addCase(finishReadingBook.rejected, (state, action) => {
+      .addCase(readingStop.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
+
       .addCase(deleteReadingRecord.pending, state => {
         state.loading = true;
         state.error = null;
@@ -130,7 +131,7 @@ const bookSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-        
+
       .addCase(fetchBookDetails.pending, state => {
         state.loading = true;
         state.error = null;
@@ -145,5 +146,4 @@ const bookSlice = createSlice({
       });
   },
 });
-
 export default bookSlice.reducer;

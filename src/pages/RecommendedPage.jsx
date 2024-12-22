@@ -1,7 +1,8 @@
-import Recommended from "../components/Recommended/Recommended.jsx";
+import Recommended from '../components/Recommended/Recommended.jsx';
 
-const RecommendedPage = () => {
-    return <Recommended />;        
+const RecommendedPage=()=> {
+  return <Recommended />;
 }
 
 export default RecommendedPage;
+

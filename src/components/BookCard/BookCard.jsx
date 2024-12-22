@@ -1,54 +1,61 @@
-import css from './BookCard.module.css'; 
 import sprite from '../../images/sprite.svg';
 import notFoundImg from '../../images/desctop-default-image@2x.jpg';
 import { useDispatch } from 'react-redux';
-import { removeBookFromCollection } from '../../redux/books/booksOperations.js';
+import { deleteBook } from '../../redux/books/booksOperations.js';
 import FallbackImage from '../FallbackImage/FallbackImage.jsx';
+import {
+  Author,
+  BookDetails,
+  BookImage,
+  DeleteButton,
+  DetailsContainer,
+  ListItem,
+  Title,
+} from './BookCard.styled.js';
 
-const BookCard=({ book, openLoginModal, currentPage = false })=> {
+const BookCard=({
+  book,
+  openBookModal,
+  currentPage = false,
+})=> {
   const dispatch = useDispatch();
 
   const handleDeleteClick = () => {
-    dispatch(removeBookFromCollection(book._id));
+    dispatch(deleteBook(book._id));
   };
 
   return (
-    <li className={css.listItem}>
+    <ListItem>
       {book.imageUrl ? (
-        <img
-          className={css.bookImage}
+        <BookImage
           src={book.imageUrl}
           alt="book title"
-          onClick={() => openLoginModal(book)}
+          onClick={() => openBookModal(book)}
         />
       ) : (
         <FallbackImage>
-          <img
-            className={css.bookImage}
+          <BookImage
             src={notFoundImg}
             alt="book title"
-            onClick={() => openLoginModal(book)}
+            onClick={() => openBookModal(book)}
           />
         </FallbackImage>
-          )}          
-          <div className={css.detailsContainer}>
-              <div className={
-            currentPage === 'MyLibrary'
-              ? `${css.bookDetails} ${css.bookDetailsTrue}`
-              : css.bookDetails
-          }>                  
-              <h3 className={css.title}>{book.title}</h3>
-              <p className={css.author}>{book.author}</p>
-              </div>
+      )}
+      <DetailsContainer>
+        <BookDetails $page={currentPage === 'MyLibrary' ? 'true' : ''}>
+          <Title>{book.title}</Title>
+          <Author>{book.author}</Author>
+        </BookDetails>
+
         {currentPage === 'MyLibrary' && (
-          <button className={css.deleteButton} onClick={handleDeleteClick}>
+          <DeleteButton onClick={handleDeleteClick}>
             <svg width={28} height={28}>
               <use href={`${sprite}#icon-dell`} />
             </svg>
-          </button>
+          </DeleteButton>
         )}
-      </div>
-    </li>
+      </DetailsContainer>
+    </ListItem>
   );
 }
 

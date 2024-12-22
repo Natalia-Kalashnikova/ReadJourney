@@ -1,41 +1,31 @@
 import sprite from '../../images/sprite.svg';
-import css from './Pagination.module.css';
-import classNames from 'classnames';
+import {
+  PaginationButton,
+  PaginationContainer,
+  PaginationSvg,
+} from './Pagination.styled';
 
 const Pagination=({ totalPages, handlePageChange, page })=> {
   return (
-    <div className={css.paginationContainer}>
-      <button
-        className={classNames(css.paginationButton, { [css.disabled]: page === 1 })}
+    <PaginationContainer>
+      <PaginationButton
         disabled={page === 1}
         onClick={() => handlePageChange(page - 1)}
       >
-        <svg
-          className={classNames(css.paginationSvg, {
-            [css.strokeDisabled]: page === 1,
-            [css.strokeEnabled]: page !== 1,
-          })}
-        >
+        <PaginationSvg stroke={page === 1 ? 'true' : ''}>
           <use href={`${sprite}#icon-chevron-left`} />
-        </svg>
-      </button>
-      <button
-        className={classNames(css.paginationButton, { [css.disabled]: page === totalPages })}
+        </PaginationSvg>
+      </PaginationButton>
+      <PaginationButton
         disabled={page === totalPages}
         onClick={() => handlePageChange(page + 1)}
       >
-        <svg
-          className={classNames(css.paginationSvg, {
-            [css.strokeDisabled]: page === totalPages,
-            [css.strokeEnabled]: page !== totalPages,
-          })}
-        >
+        <PaginationSvg stroke={page === totalPages ? 'true' : ''}>
           <use href={`${sprite}#icon-chevron-right`} />
-        </svg>
-      </button>
-    </div>
+        </PaginationSvg>
+      </PaginationButton>
+    </PaginationContainer>
   );
 }
-
 
 export default Pagination;

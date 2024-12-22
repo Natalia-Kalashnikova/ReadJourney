@@ -1,9 +1,7 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 axios.defaults.baseURL = 'https://readjourney.b.goit.study/api';
-
 
 const setAuthorizationHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -52,13 +50,15 @@ export const logOutUser = createAsyncThunk(
 );
 
 export const fetchCurrentUser = createAsyncThunk(
-  'users/current',
+  '/users/current',
   async (_, { rejectWithValue, getState }) => {
     const state = getState();
     const authToken = state.auth.token;
 
     if (authToken === null) {
-      return rejectWithValue('Failed to retrieve user data');
+      return rejectWithValue(
+        'Failed to retrieve user data'
+      );
     }
 
     try {

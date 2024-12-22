@@ -1,8 +1,7 @@
-import css from "../Container/Container.module.css";
-
+import { GBlock } from './Container.styled';
 
 const Container = ({ children }) => {
-    return <div className={css.container}>{children}</div>
+  return <GBlock>{children}</GBlock>;
 };
 
 export default Container;
