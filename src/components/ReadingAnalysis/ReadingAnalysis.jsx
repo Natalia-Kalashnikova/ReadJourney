@@ -17,7 +17,9 @@ const ReadingAnalysis = ({ totalReadPages }) => {
 
   const roundToTwoDecimalPlaces = () => {
     const percentage = Math.min(
-      (Math.round(totalReadPages * 100) / InfoAboutBook.totalPages).toFixed(2),
+      Math.round(
+        ((totalReadPages + 1) * 100) / InfoAboutBook.totalPages
+      ).toFixed(2),
       100
     );
     return percentage;

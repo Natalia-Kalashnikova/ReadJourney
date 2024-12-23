@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
-import { ErrorMessage, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import {
   fetchBookDetails,
   readingStart,
@@ -25,7 +25,7 @@ import {
   Heading,
   Label,
 } from '../Dashboard/Dashboard.styled.js';
-import { FormField, Forma } from './ReadingPanel.styled.js';
+import { FormField, Forma, ErrorMessageStyled } from './ReadingPanel.styled.js';
 
 const initialValues = {
   page: '',
@@ -46,7 +46,7 @@ const ReadingPanel = ({ selectedBook, onReadChange }) => {
   const [read, setRead] = useState(false);
   const [diaryStat, setDiaryStat] = useState(false);
   const [activeModal, setActiveModal] = useState(false);
-
+  const [pageError, setPageError] = useState('');
   const dispatch = useDispatch();
   const InfoAboutBook = useSelector(selectInfoCurrentBook);
   const ReadBook = useSelector(selectReadBook);
@@ -62,17 +62,20 @@ const ReadingPanel = ({ selectedBook, onReadChange }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (activeModal) {
-        const totalReadPages = InfoAboutBook?.progress?.reduce(
-          (total, entry) => {
-            const startPage = Number(entry.startPage);
-            const finishPage = Number(entry.finishPage);
-            if (!isNaN(startPage) && !isNaN(finishPage)) {
-              return total + (finishPage - startPage);
+        let totalReadPages = 0;
+
+        InfoAboutBook?.progress?.forEach(entry => {
+          const startPage = Number(entry.startPage);
+          const finishPage = Number(entry.finishPage);
+
+          if (!isNaN(startPage) && !isNaN(finishPage)) {
+            totalReadPages += finishPage - startPage;
+
+            if (finishPage === InfoAboutBook.totalPages) {
+              totalReadPages += 1;
             }
-            return total;
-          },
-          0
-        );
+          }
+        });
 
         if (totalReadPages >= InfoAboutBook?.totalPages) {
           setModalOpen(true);
@@ -114,18 +117,26 @@ const ReadingPanel = ({ selectedBook, onReadChange }) => {
   }
 
   const handleSubmit = e => {
-    const requestData = {
-      id: selectedBook,
-      page: e.page,
-    };
     if (e.page) {
+      const pageNumber = parseInt(e.page, 10);
+      if (pageNumber > InfoAboutBook.totalPages) {
+        setPageError(`Page number must not exceed ${InfoAboutBook.totalPages}`);
+        return;
+      } else {
+        setPageError('');
+      }
+
+      const requestData = {
+        id: selectedBook,
+        page: e.page,
+      };
+
       if (!read) {
         setActiveModal(false);
         dispatch(readingStart(requestData));
         setRead(true);
         onReadChange(read);
-      }
-      if (read) {
+      } else {
         setActiveModal(true);
         dispatch(readingStop(requestData));
         setRead(false);
@@ -143,7 +154,7 @@ const ReadingPanel = ({ selectedBook, onReadChange }) => {
           initialValues={initialValues}
           validationSchema={schema}
           onSubmit={handleSubmit}>
-          {({ errors, touched }) => (
+          {({ errors, touched, values, handleChange, handleBlur }) => (
             <Form>
               <FormContainer>
                 <FieldContainer>
@@ -151,17 +162,40 @@ const ReadingPanel = ({ selectedBook, onReadChange }) => {
                   <FormField
                     id="page"
                     name="page"
-                    type="page"
+                    type="text"
                     placeholder="0"
-                    paddindleft="111px"
+                    paddindleft="121px"
                     error={errors.page && touched.page ? 'true' : 'false'}
+                    onChange={e => {
+                      handleChange(e);
+                      const value = e.target.value;
+                      if (
+                        parseInt(value, 10) > InfoAboutBook.totalPages &&
+                        !isNaN(value) &&
+                        value !== ''
+                      ) {
+                        setPageError(
+                          `Page number must not exceed ${InfoAboutBook.totalPages}`
+                        );
+                      } else {
+                        setPageError('');
+                      }
+                    }}
+                    onBlur={handleBlur}
+                    value={values.page}
                   />
-                  <ErrorMessage name="page" component="div" />
+                  <ErrorMessageStyled name="page" />
+                  {pageError && (
+                    <div style={{ color: 'red', marginTop: '8px' }}>
+                      {pageError}
+                    </div>
+                  )}
                 </FieldContainer>
               </FormContainer>
               <Button
                 label={read ? 'To stop' : 'To start'}
                 onClick={handleSubmit}
+                disabled={!!pageError}
               />
             </Form>
           )}

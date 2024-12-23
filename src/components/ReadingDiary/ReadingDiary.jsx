@@ -50,6 +50,10 @@ const ReadingDiary = ({ dailyReadings }) => {
                 (total, dailyReading) => total + dailyReading.totalRead,
                 0
               );
+              const finishPage = dailyReadingArray.some(
+                dailyReading =>
+                  dailyReading.finishPage === InfoAboutBook.totalPages
+              );
               return (
                 <li key={date}>
                   <DiaryDayContainer>
@@ -57,7 +61,11 @@ const ReadingDiary = ({ dailyReadings }) => {
                       <NestedDiv first={index === 0 ? 'true' : 'false'} />
                     </DayContainer>
                     <DiaryHeader>{date}</DiaryHeader>
-                    <DiaryPages>{totalReadForDay} pages</DiaryPages>
+                    <DiaryPages>
+                      {finishPage
+                        ? `${InfoAboutBook.totalPages} pages`
+                        : `${totalReadForDay} pages`}
+                    </DiaryPages>
                   </DiaryDayContainer>
                   <ul>
                     {dailyReadingArray.map(dailyReading => (

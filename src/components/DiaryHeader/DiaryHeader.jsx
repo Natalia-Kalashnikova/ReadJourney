@@ -1,3 +1,4 @@
+import React from 'react';
 import sprite from '../../images/sprite.svg';
 import {
   ButtonContainer,
@@ -9,13 +10,14 @@ import {
 
 const DiaryHeader = ({ diaryStat, setDiaryStat }) => {
   const handleDiaryStatistic = e => {
-    if (e) setDiaryStat(false);
-    if (!e) setDiaryStat(true);
+    setDiaryStat(!e);
   };
 
-  if (document.activeElement instanceof HTMLElement) {
-    document.activeElement.blur();
-  }
+  React.useEffect(() => {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  }, []);
 
   return (
     <HeaderContainer>

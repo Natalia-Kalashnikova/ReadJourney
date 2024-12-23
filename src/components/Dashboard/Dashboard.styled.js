@@ -61,7 +61,9 @@ export const InputField = styled(Field)`
   border-radius: 12px;
   border: 1px solid
     ${props =>
-      props.error === 'true' ? color.focusColor : 'rgba(18, 20, 23, 0.1)'};
+  props.error === 'true' ? color.focusColor : 'rgba(18, 20, 23, 0.1)'};
+      
+  &::placeholder { color: ${color.whitePrimary_color};
 
   @media (min-width: 768px) {
     height: 50px;
