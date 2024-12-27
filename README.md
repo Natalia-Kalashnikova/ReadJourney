@@ -61,8 +61,6 @@ sizes. Below are the key technologies used in the project:
 - **Styled-components**: For UI styling.
 - **Axios**: A promise-based HTTP client for making API requests, used for
   communication with the backend.
-- **React Select**: For dropdown select component, used for selection forms and
-  filters.
 - **RC Progress**: For progress bar component for React, used to visually
   indicate reading progress.
 - **React Responsive**: For building responsive designs.
